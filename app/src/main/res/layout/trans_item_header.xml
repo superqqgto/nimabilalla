@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/prompt_text_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_left_and_right_small"
+        android:orientation="horizontal">
+
+        <!--trans type-->
+        <TextView
+            android:id="@+id/trans_type_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textSize="@dimen/font_size_small"
+            android:text="@string/history_detail_type" />
+        <!-- Issuer -->
+        <TextView
+            android:id="@+id/issuer_type_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/history_detail_issuer" />
+        <!-- Amount -->
+        <TextView
+            android:id="@+id/trans_amount_tv"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/history_detail_amount" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_left_and_right_small"
+        android:orientation="horizontal">
+
+        <!-- trans no -->
+        <TextView
+            android:id="@+id/trans_no_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/history_detail_trace_no" />
+        <!-- trans date-->
+        <TextView
+            android:id="@+id/trans_date_tv"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/dateTime" />
+    </LinearLayout>
+
+    <!-- TODO: just gone, in case we still need it -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_left_and_right_small"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <!-- ref no -->
+        <TextView
+            android:id="@+id/trans_ref_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/history_summary_ref_no" />
+        <!-- status -->
+        <TextView
+            android:id="@+id/trans_state_tv"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="@dimen/font_size_smaller"
+            android:text="@string/history_detail_state" />
+    </LinearLayout>
+
+</LinearLayout>

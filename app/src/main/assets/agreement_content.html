@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child,
+ol li > :first-child,
+ul li ul:first-of-type,
+ol li ol:first-of-type,
+ul li ol:first-of-type,
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+    <base href='file:\\\C:\Users\huangwp\Desktop\'/>
+</head>
+<body>
+<pre><code>      &lt;&lt;USER PAYMENT AGREEMENT&gt;&gt;
+</code></pre>
+
+<p>THIS PAYMENT AND GUARANTEE AGREEMENT (&quot;Guarantee Agreement&quot;), dated as of _________(M/D/Y), is executed and delivered by AAA Corp., a <strong><strong><strong><strong><em>(STATE) corporation(the &quot;Guarantor&quot;), for the benefit of the Holders (as defined below) from time to time of the Series A Preferred Securities (as defined below) of BBB L.P. (the &quot;Issuer&quot;), a limited partnership formed under the _________ Revised Uniform Limited Partnership Act (the&quot;</em></strong></strong></strong></strong> Act&quot;).</p>
+<p>WHEREAS, Issuer is issuing on the date hereof _________ shares of its 9 Cumulative Preferred Securities, Series A (the &quot;Series A Preferred Securities&quot;), and the Guarantor desires to issue this Guarantee Agreement for the benefit of the Holders, as provided herein;</p>
+<p>WHEREAS, the Issuer pursuant to the Loan Agreement (as defined below) will loan to the Guarantor the proceeds from the issuance and sale of the Series A Preferred Securities and its contribution as general partner (the &quot;General Partner&quot;) in respect of its general partner interest (the &quot;GP Interest&quot;); and</p>
+<p>WHEREAS, the Guarantor desires hereby irrevocably and unconditionally to agree to the extent set forth herein to pay to the Holders the Guarantee Payments (as defined below) and to make certain other payments on the terms and conditions set forth herein.</p>
+<p>NOW, THEREFORE, in consideration of the purchase by each Holder of the Series A Preferred Securities, which purchase the Guarantor hereby agrees shall benefit the Guarantor, the Guarantor executes and delivers this Guarantee Agreement for the benefit of the Holders.
+    ARTICLE I
+    As used in this Guarantee Agreement, the terms set forth below shall, unless the context otherwise requires, have the following meanings. Capitalized terms used but not otherwise defined herein shall have the meanings assigned to such terms in the Amended and Restated Agreement of Limited Partnership of the Issuer dated as of _________(M/D/Y) (the &quot;Partnership Agreement&quot;).</p>
+<p>&quot;Dividends&quot; shall mean any distribution on the Series A Preferred Securities, including additional distributions in respect of distributions in arrears, required to be made pursuant to the terms of the Partnership Agreement, other than distributions on liquidation.</p>
+<p>&quot;Expense Agreement&quot; shall mean the provisions of Section the 5.03 of the Partnership Agreement pursuant to which the Guarantor has agreed to guarantee the
+    payment of any indebtedness or liabilities incurred by the Issuer (other than obligations to Holders of Series A Preferred Securities in such Holders' capacities as Holders of such Series A Preferred Securities).</p>
+<p>&quot;Guarantee Payments&quot; shall mean the following payments, without duplication, to the extent not paid by the Issuer: (i) any accumulated and unpaid Dividends which have been theretofore required to be paid pursuant to the terms of the Partnership Agreement, (ii) the Redemption Price payable with respect to any Series A Preferred Securities called for redemption by the Issuer, (iii) upon a liquidation of the Issuer, the lesser of (a) the Liquidation Distribution and (b) the amount of assets of the Issuer available for distribution to Holders in liquidation of the Issuer and (iv) any Additional Interest (as defined below) payable by the Issuer in respect of the Series A Preferred Securities.</p>
+<p>&quot;Holder&quot; shall mean any holder (as defined in the Partnership Agreement) from time to time of any Series A Preferred Securities of the Issuer; provided, however, that in determining whether the Holders of the requisite percentage of Series A Preferred Securities have given any request, notice, consent or waiver hereunder, &quot;Holder&quot; shall not include the Guarantor or any entity owned more than 50% by the Guarantor, either directly or indirectly.</p>
+<p>&quot;Liquidation Distribution&quot; shall mean the aggregate of the liquidation preference of $,_________ per Series A Preferred Security and all accumulated and unpaid Dividends to the date of payment.</p>
+<p>&quot;Loan Agreement&quot; shall mean the agreement, dated as of the date hereof, pursuant to which the Issuer will loan to the Guarantor the proceeds received by the Issuer from the issuance and sale of the Series A Preferred Securities and the contribution of the General Partner in respect of the GP Interest.</p>
+<p>&quot;Paying Agent&quot; shall mean AAA Corp., as registrar, transfer agent and paying agent.</p>
+<p>&quot;Redemption Price&quot; shall mean $,_________ per Preferred Security plus accumulated and unpaid Dividends to the date fixed for redemption.
+    ARTICLE II
+    SECTION 2.01
+    (a) The Guarantor irrevocably and unconditionally agrees to pay in full to the Holders the Guarantee Payments, as and when due (except to the extent paid by the Issuer), regardless of any defense, right of set-off or counterclaim which the Issuer may have or assert. The Guarantor's obligation to make a Guarantee Payment may be satisfied by direct payment of the required amounts by the Guarantor to the Holders or by causing the Issuer to pay such amounts to the Holders.</p>
+<h1></h1>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,95 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/wifi"
+        android:dialogTitle="@string/commParam_menu_comm_mode_choose"
+        android:entries="@array/commParam_menu_comm_mode_list_entries"
+        android:entryValues="@array/commParam_menu_comm_mode_values_list_entries"
+        android:key="COMM_TYPE"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/commParam_menu_comm_mode_issuer" />
+
+    <!-- AET-119 -->
+    <ListPreference
+        android:defaultValue="30"
+        android:dialogTitle="@string/commParam_menu_comm_timeout_prompt"
+        android:entries="@array/edc_connect_time_entries"
+        android:entryValues="@array/edc_connect_time_entries"
+        android:key="COMM_TIMEOUT"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/commParam_menu_comm_timeout" />
+
+    <!-- 打开一个sub screen 移动网络-->
+    <PreferenceCategory
+        android:key="mobile_category_key"
+        android:persistent="false"
+        android:title="@string/communication_menu_mobile">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="MOBILE_KEEP_ALIVE"
+            android:summaryOff="@string/no"
+            android:summaryOn="@string/yes"
+            android:title="@string/commParam_menu_mobile_wifi_keep_alive" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:key="MOBILE_WLTELNO"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/commParam_menu_mobile_dial_no" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:ems="50"
+            android:key="MOBILE_APN"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/commParam_menu_mobile_apn" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="MOBILE_NEED_USER"
+            android:summaryOff="@string/no"
+            android:summaryOn="@string/yes"
+            android:title="@string/commParam_menu_mobile_need_user" />
+
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="MOBILE_NEED_USER"
+            android:ems="50"
+            android:key="MOBILE_USER"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/commParam_menu_mobile_username" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="MOBILE_NEED_USER"
+            android:ems="50"
+            android:key="MOBILE_PWD"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/commParam_menu_mobile_user_password" />
+    </PreferenceCategory>
+
+
+    <!-- 打开一个subscreen "wifi" -->
+    <PreferenceCategory
+        android:key="wifi_category_key"
+        android:persistent="false"
+        android:title="@string/communication_menu_wifi">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="WIFI_ENABLE"
+            android:title="@string/open_wifi" />
+    </PreferenceCategory>
+    <!--  <PreferenceCategory>
+     </PreferenceCategory> -->
+
+</PreferenceScreen>

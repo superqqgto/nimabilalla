@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的android:codes值必须配置为该字符的ASCII码 -->
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:keyWidth="25%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0px"
+    android:keyHeight="13.5%p">
+    <Row>
+        <Key
+            android:codes="49"
+            android:keyLabel="1"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="50"
+            android:keyLabel="2"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="51"
+            android:keyLabel="3"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="-3"
+            android:keyLabel="@string/dialog_cancel"
+            android:keyIcon="@drawable/selection_button_gray"
+            android:keyEdgeFlags="right" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="52"
+            android:keyLabel="4"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="53"
+            android:keyLabel="5"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="54"
+            android:keyLabel="6"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="-5"
+            android:keyLabel="@string/dialog_delete"
+            android:keyIcon="@drawable/selection_button_gray"
+            android:keyEdgeFlags="right"
+            android:isRepeatable="true" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="55"
+            android:keyLabel="7"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="56"
+            android:keyLabel="8"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="57"
+            android:keyLabel="9"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="-4"
+            android:keyLabel="@string/dialog_ok"
+            android:keyIcon="@drawable/selection_button_confirm"
+            android:keyEdgeFlags="right"
+            android:keyHeight="27%p" />
+    </Row>
+    <Row>
+        <Key
+            android:codes="484848"
+            android:keyLabel="000"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="4848"
+            android:keyLabel="00"
+            android:keyIcon="@drawable/selection_button" />
+        <Key
+            android:codes="48"
+            android:keyLabel="0"
+            android:keyIcon="@drawable/selection_button" />
+
+    </Row>
+</Keyboard>

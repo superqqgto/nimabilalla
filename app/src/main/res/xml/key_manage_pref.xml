@@ -1,0 +1,77 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.pax.view.EditTextPreferenceFix
+        android:capitalize="words"
+        android:defaultValue="1"
+        android:digits="1234567890"
+        android:ems="2"
+        android:inputType="number"
+        android:key="MK_INDEX"
+        android:maxLength="3"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/keyManage_menu_tmk_index" />
+
+    <ListPreference
+        android:capitalize="words"
+        android:dialogTitle="@string/keyManage_menu_key_des_type_choose"
+        android:entries="@array/keyManage_menu_key_des_type_list_entries"
+        android:entryValues="@array/keyManage_menu_key_des_type_list_entries"
+        android:key="KEY_ALGORITHM"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/keyManage_menu_des_type" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="IS_EX_PINPAD"
+        android:summaryOff="@string/inside"
+        android:summaryOn="@string/outside"
+        android:title="@string/systemParam_menu_is_ex_pinpad" />
+
+    <PreferenceCategory
+        android:key="key_in_master_key"
+        android:persistent="false"
+        android:title="@string/keyManage_menu_key_value">
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:defaultValue="1"
+            android:digits="1234567890"
+            android:inputType="number"
+            android:key="MK_INDEX_MANUAL"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/keyManage_menu_tmk_index_no" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:key="MK_VALUE"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/keyManage_menu_tmk_value" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:key="PK_VALUE"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/keyManage_menu_tpk_value" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:key="AK_VALUE"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/keyManage_menu_tak_value" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:orientation="vertical">
+
+        <include layout="@layout/header_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_margin_top_small"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_left_and_right"
+                android:text="@string/prompt_base_amount"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_normal" />
+
+            <TextView
+                android:id="@+id/base_amount_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_left_and_right"
+                android:gravity="end|center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_larger"
+                android:hint="@string/amount_default"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tip_amount_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/prompt_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:layout_marginStart="@dimen/space_left_and_right"
+                android:gravity="center_vertical"
+                android:text="@string/prompt_tip"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_normal" />
+
+            <TextView
+                android:id="@+id/tip_amount_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:layout_marginEnd="@dimen/space_left_and_right"
+                android:gravity="end|center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_normal"
+                android:hint="@string/amount_default" />
+        </LinearLayout>
+
+        <com.pax.view.keyboard.CustomKeyboardEditText
+            android:id="@+id/amount_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_left_and_right_normal_small"
+            android:layout_marginStart="@dimen/space_left_and_right"
+            android:layout_marginEnd="@dimen/space_left_and_right"
+            android:background="@color/colorPrimaryDark"
+            android:focusable="true"
+            android:gravity="end|center_vertical"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_largest"
+            android:text="@string/placeholder"
+            app:xml="@xml/amount_keyboard_large"
+            app:autoSize="true"
+            app:keepKeyboardOn="true" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.2"
+        android:background="@color/keyboard_background_color"
+        android:visibility="visible"/>
+
+</LinearLayout>

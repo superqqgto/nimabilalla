@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_title_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <include layout="@layout/header_layout" />
+
+        <include layout="@layout/fragment_settle_details"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/settle_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space_height_normal"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:background="@drawable/button_background"
+        android:text="@string/trans_settle"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_normal" />
+
+</RelativeLayout>

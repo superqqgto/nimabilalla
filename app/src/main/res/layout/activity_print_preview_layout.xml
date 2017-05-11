@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/space_margin_top_small"
+            android:layout_marginStart="@dimen/space_size_large"
+            android:layout_marginEnd="@dimen/space_size_large"
+            android:src="@drawable/print_preview_header"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/image_desc" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/receipt_preview_top">
+
+            <ImageView
+                android:id="@+id/printPreview"
+                android:background="@drawable/print_preview_body"
+                android:layout_marginStart="@dimen/receipt_preview_start_end"
+                android:layout_marginEnd="@dimen/receipt_preview_start_end"
+                android:paddingStart="@dimen/receipt_preview_padding_start_end"
+                android:paddingEnd="@dimen/receipt_preview_padding_start_end"
+                android:paddingBottom="@dimen/receipt_preview_padding_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/image_desc" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/button_background"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@drawable/selection_button_gray"
+                android:text="@string/dialog_cancel"
+                android:textColor="@color/cancel_button_text"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <Button
+                android:id="@+id/print_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="@string/dialog_print"
+                android:textColor="@color/key_normal_color"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <ImageButton
+                android:id="@+id/receipt_mode_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/key_normal_color"
+                android:src="@drawable/h"
+                style="?android:attr/buttonBarButtonStyle"
+                android:contentDescription="@string/image_desc"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

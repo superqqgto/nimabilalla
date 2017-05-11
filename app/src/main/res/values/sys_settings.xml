@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 系统设置 -->
+    <string name="settings_title">Config</string>
+    <string name="settings_menu_communication_parameter">Comm</string>
+    <string name="settings_menu_edc_parameter">EDC</string>
+    <string name="settings_menu_issuer_parameter">Issuer</string>
+    <string name="settings_menu_acquirer_parameter">Acquirer</string>
+    <string name="settings_menu_keyManage">Key</string>
+    <string name="settings_menu_pwd_manage">Password</string>
+    <string name="settings_menu_date_time">Date/Time</string>
+    <string name="settings_menu_otherManage">Other</string>
+
+    <!-- 商户参数 -->
+
+    <string name="terminal_date_time" tools:keep="@string/terminal_date_time">Terminal Date/Time:</string>
+    <string name="currency_list">Currency:</string>
+
+    <!-- 系统设置的系统参数 -->
+    <string name="systemParam_menu_is_ex_pinpad">External PINPAD</string>
+
+    <!-- 系统设置的通讯参数 -->
+    <string name="commParam_menu_comm_mode_choose">Please Choose Comm Mode:</string>
+    <string name="commParam_menu_comm_mode_issuer">Communication Type</string>
+    <string name="commParam_menu_comm_timeout_prompt">Please Choose Comm Timeout:</string>
+    <string name="commParam_menu_comm_timeout">Comm Timeout</string>
+    <string name="communication_menu_mobile">Mobile Network</string>
+    <string name="communication_menu_wifi">Wifi</string>
+    <string name="edc_merchant_name">Merchant Name</string>
+    <string name="edc_merchant_address">Merchant Address</string>
+    <string name="edc_connect_time">Please Choose Connect time:</string>
+    <string name="edc_ped_mode">Please Choose Ped mode:</string>
+    <string name="edc_ped_mode_prompt">Please Choose Ped mode:</string>
+    <string name="edc_receipt_no">Receipt #</string>
+    <string name="edc_trace_no">Trace No.</string>
+
+    <string name="auth_code_mode">Please Choose Auth Code mode:</string>
+    <string name="edc_enable_dcc">Enable Dcc</string>
+    <string name="edc_enable_motosale">Enable Moto Sale</string>
+    <string name="select_dcc_partner">SELECT DCC PARTNER</string>
+
+    <string name="edc_enable_tip">Enable Tip</string>
+    <string name="edc_support_keyin">Support Manual Input</string>
+    <string name="edc_enable_paperless">Enable Paperless</string>
+    <string name="edc_smtp_host_name">SMTP Host</string>
+    <string name="edc_smtp_port">SMTP Port</string>
+    <string name="edc_smtp_username">SMTP Auth User Name</string>
+    <string name="edc_smtp_password">SMTP Auth Password</string>
+    <string name="edc_smtp_enable_ssl">SMTP Enable SSL</string>
+    <string name="edc_smtp_ssl_port">SMTP SSL Port</string>
+    <string name="edc_smtp_from">SMTP From Address</string>
+    <string name="edc_enable_user_agreement">Enable User Agreement</string>
+
+    <!-- 通讯参数的移动网络 -->
+    <string name="commParam_menu_mobile_wifi_keep_alive">Keep Alive</string>
+    <string name="commParam_menu_mobile_dial_no">AP</string>
+    <string name="commParam_menu_mobile_apn">APN</string>
+    <string name="commParam_menu_mobile_need_user">Need User</string>
+    <string name="commParam_menu_mobile_username">User Name</string>
+    <string name="commParam_menu_mobile_user_password">User Password</string>
+
+    <!-- wifi status -->
+    <string name="wifi_scanning">Scanning&#8230;</string>
+    <string name="wifi_connecting">Connecting&#8230;</string>
+    <string name="wifi_authenticating">Authenticating&#8230;</string>
+    <string name="wifi_getting_ip">Getting IP&#8230;</string>
+    <string name="wifi_connected">Connected</string>
+    <string name="wifi_paused">Paused</string>
+    <string name="wifi_disconnecting">Disconnecting&#8230;</string>
+    <string name="wifi_disconnected">Disconnected</string>
+    <string name="wifi_failed">Failed</string>
+
+    <string name="open_wifi">Open Wifi</string>
+    <string name="wifi_started">"Opened"</string>
+    <string name="wifi_starting">"Opening Wi-Fi&#8230;"</string>
+    <string name="wifi_stopping">"Stopping Wi-Fi&#8230;"</string>
+    <string name="wifi_empty_list_wifi_off">"To Check Available Networks, Please Open Wi-Fi."</string>
+    <string name="signal_level">Signal Level</string>
+    <string name="safety">Safety</string>
+    <string name="pwd">Password</string>
+    <string name="strong">Strong</string>
+    <string name="general">General</string>
+    <string name="weak">Weak</string>
+    <string name="connect">Connect</string>
+    <string name="connect_fail">Connect Fail</string>
+    <string name="wifi_fail_to_scan">"Fail To Scan"</string>
+    <string name="wifi_error">"Error"</string>
+    <string name="wifi_security_eap">802.1x EAP</string>
+    <string name="wifi_security_short_eap">802.1x</string>
+    <string name="wifi_security_short_wpa">WPA</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_short_wpa2">WPA2</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_short_wpa_wpa2">WPA/WPA2</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_short_psk_generic">@string/wifi_security_short_wpa_wpa2</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_none">None</string>
+    <string name="wifi_not_in_range">"Not In Range"</string>
+    <string name="wifi_disabled_password_failure">"Authentication Failure"</string>
+    <string name="wifi_disabled_network_failure">"Disabled Poor Network Connection"</string>
+    <string name="wifi_disabled_generic">"Disabled"</string>
+    <string name="wifi_remembered">"Saved"</string>
+    <string name="wifi_secured_first_item">"Secured Network Is Available"</string>
+    <string name="wifi_secured_second_item">"Secured Network Is Available"</string>
+    <string name="wifi_wps_available_first_item">"Secured Network Is Available"</string>
+    <string name="wifi_wps_available_second_item">" （Secured Network Is Available）"</string>
+
+    <string name="long_connect">Long Connect</string>
+    <string name="short_connect">Short Connect</string>
+
+    <!-- 系统设置的终端密钥管理 -->
+    <string name="keyManage_menu_key_des_type_choose">Please Choose key Algorithm:</string>
+
+    <string name="set_manager_menu_other">Other Param</string>
+    <string name="keyManage_menu_des">des</string>
+    <string name="keyManage_menu_3des">3des</string>
+    <string name="keyManage_menu_tmk_index">Master Key Index(0&#8211;99)</string>
+    <string name="keyManage_menu_des_type">DES Algorithm</string>
+    <string name="keyManage_menu_key_value">Import Key Manually</string>
+    <string name="keyManage_menu_tmk_index_no">Master Key Index(0&#8211;99)</string>
+    <string name="keyManage_menu_tmk_value">Master Key</string>
+    <string name="keyManage_menu_tpk_value">PIN Key</string>
+    <string name="keyManage_menu_tak_value">MAC Key</string>
+    <string name="keyManage_menu_index_err">Please Input Key Index</string>
+    <string name="keyManage_menu_update_key_success">Update Key Success</string>
+    <string name="keyManage_menu_update_key_error">Update Key Fail</string>
+
+    <!-- 系统设置的密码管理 -->
+
+    <string name="pwdManage_system">Administrator Password</string>
+    <string name="pwdManage_safe">Security Password</string>
+    <string name="input_old_password">Please Input Old Password</string>
+    <string name="input_new_password">Please Input New Password</string>
+    <string name="input_again_new_password">Confirm New Password</string>
+    <string name="error_input_length">Length Error</string>
+    <string name="error_old_password">Old Password Error</string>
+    <string name="error_password">Password Error</string>
+    <string name="error_password_no_same">Password Not Match\nPlease Input Again</string>
+    <string name="password_modify_success">Modify Password Success</string>
+
+    <!-- 系统设置的其他管理 -->
+    <string name="otherManage_menu_set_clear_func">Clear Function</string>
+    <string name="otherManage_menu_set_voucherSheet_print">Voucher Sheet Print</string>
+    <string name="otherManage_menu_set_download">Download Function</string>
+    <string name="otherManage_menu_set_para_print">Parameter Print</string>
+    <string name="otherManage_menu_set_dcc_partner">Choose Dcc Partner</string>
+
+    <string name="om_clearTrade_menu_reversal">Clear Reversal</string>
+    <string name="om_clearTrade_menu_trade_voucher">Clear Trade Voucher</string>
+    <string name="om_clearTrade_menu_deal_require">Clear Deal Require</string>
+    <string name="om_clearTrade_menu_black_list">Clear Black List</string>
+    <string name="om_clearTrade_menu_key">Clear Key</string>
+
+    <string name="om_clearTrade_menu_pos_space">POS Available Space</string>
+    <string name="om_clearTrade_menu_reversal_1">Clear Reversal?</string>
+    <string name="om_clearTrade_menu_trade_voucher_1">Clear Trade Voucher?</string>
+    <string name="om_clearTrade_menu_script_1">Clear Script?</string>
+
+    <string name="om_dcc_partner_FEXCO">FEXCO</string>
+    <string name="om_dcc_partner_PC">PC</string>
+    <string name="om_dcc_partner_FINTRAX">FINTRAX</string>
+
+    <string name="selfTest_succ">SelfTest Success</string>
+
+    <string name="om_download_menu_echo_test">Echo Test</string>
+    <string name="om_download_menu_echo_test_succ">Echo Test Success</string>
+    <string name="om_download_menu_echo_test_error">Echo Test Fail</string>
+    <string name="om_download_menu_parameter_pass">Parameter Pass</string>
+    <string name="om_download_menu_parameter_pass_succ">Parameter Pass Success</string>
+    <string name="om_download_menu_parameter_pass_error">Parameter Pass Fail,Please Check Exception</string>
+    <string name="om_download_menu_iccard_public_key">IC Card Public Key Download</string>
+    <string name="om_download_menu_iccard_parameter">IC Card Parameter Download</string>
+    <string name="om_download_menu_binb">BinB Download</string>
+    <string name="om_download_menu_binc">BinC Download</string>
+    <string name="om_download_tmk">Download TMK</string>
+    <string name="communication_test_success">Communication Line Normal</string>
+    <string name="parameter_download_success">Parameter Download Success</string>
+    <string name="iccard_public_key_download_success">Update Public Key Success</string>
+    <string name="iccard_parameter_download_success">Update AID Success</string>
+
+    <string name="om_paramPrint_menu_print_merchant_para">Merchant Information</string>
+    <string name="om_paramPrint_menu_print_trade_para">Trade Control</string>
+    <string name="om_paramPrint_menu_print_sys_para">System Control</string>
+    <string name="om_paramPrint_menu_print_comm_para">Communication Parameter</string>
+    <string name="om_paramPrint_menu_print_version_para">Version Information</string>
+    <string name="om_paramPrint_menu_print_other_para">Others</string>
+
+    <string name="trader_parameter_title">Merchant Parameter</string>
+    <string name="input_merchant_number">Please Input Merchant NO.(15):</string>
+    <string name="please_download_key">Please Download Key</string>
+    <string name="preAuthorization_menu_start">Pre-authorization</string>
+    <string name="preAuthorization_menu_cancel">Pre-authorization Cancel</string>
+    <string name="offline_menu_adjust">Settle Adjust</string>
+    <string name="print_menu_last_deal">Reprint Last Deal</string>
+    <string name="print_menu_one_deal">Reprint One Deal</string>
+    <string name="print_menu_all_deal">Print Deal Details</string>
+    <string name="print_menu_deal_sum">Print Deal Sum</string>
+    <string name="print_menu_settlement">Reprint Settlement</string>
+    <string name="manage_menu_deal_inquiry">Transaction Inquiry</string>
+    <string name="manage_menu_operator">Operator</string>
+    <string name="manage_menu_outline_number">Outline Number</string>
+    <string name="manage_menu_settlement">Settlement</string>
+    <string name="manage_menu_lock">Lock Terminal</string>
+    <string name="manage_menu_version">Version</string>
+    <string name="operator_menu_modify_admin_password">Administrator Modify Password</string>
+    <string name="operator_menu_admin_settings">Administrator Settings</string>
+    <string name="version_info">Software Version Information</string>
+    <string name="version_no">Software Version NO.</string>
+    <string name="lock_title">Lock Terminal(Unlock)</string>
+    <string name="other_menu_divided_payment">Installment Payment</string>
+    <string name="order_menu_consume">Consume</string>
+    <string name="order_menu_consume_cancel">Consume Cancel</string>
+    <string name="order_menu_return">Refund</string>
+    <string name="order_menu_preAuthorization">Pre-authorization</string>
+    <string name="order_menu_cardholder_check">Cardholder Check</string>
+
+    <!-- 响应码错误提示语 -->
+    <string name="error_trade">Trade Fail</string>
+    <string name="response_00">Success</string>
+    <string name="response_01">Refer to card issuer</string>
+    <string name="response_02">Refer to card issuer,special condition</string>
+    <string name="response_03">Invalid Merchant</string>
+    <string name="response_04">Pick-up card</string>
+    <string name="response_05">Cardholder Authentication Fail</string>
+    <string name="response_06">Error</string>
+    <string name="response_07">Pick-up card,special condition</string>
+    <string name="response_08">Honour with identification</string>
+    <string name="response_09">Request in progress</string>
+    <string name="response_10">Approved, partial</string>
+    <string name="response_11">Approved, VIP</string>
+    <string name="response_12">Invalid Transaction</string>
+    <string name="response_13">Invalid Amount</string>
+    <string name="response_14">Invalid Card NO.</string>
+    <string name="response_15">No such issuer</string>
+    <string name="response_19">RE-ENTER TRANS.</string>
+    <string name="response_20">Invalid response</string>
+    <string name="response_21">The Card Is Not Initialized or Sleeping Card</string>
+    <string name="response_22">Suspected malfunction</string>
+    <string name="response_25">No Original Trade, Please Contact Issuer</string>
+
+    <string name="response_30">Format Error</string>
+    <string name="response_31">Bank not supported</string>
+    <string name="response_32">Expired card, pick-up</string>
+    <string name="response_33">Suspected fraud, pick-up</string>
+    <string name="response_34">Fraudr</string>
+    <string name="response_36">Restricted card, pick-up</string>
+    <string name="response_38">PIN tries exceeded</string>
+    <string name="response_39">No credit account</string>
+    <string name="response_40">Function not supported</string>
+    <string name="response_41">Report Loss Card,Please Confiscate(POS)</string>
+    <string name="response_42">No universal account</string>
+    <string name="response_43">Stolen Card, Please Confiscate</string>
+    <string name="response_45">Fallback not allowed</string>
+    <string name="response_51">Not sufficient funds</string>
+    <string name="response_52">No check account</string>
+    <string name="response_53">No savings account</string>
+    <string name="response_54">The Card Is Out Of Date</string>
+    <string name="response_55">Password Error</string>
+    <string name="response_56">No card record</string>
+    <string name="response_57">Transaction not permitted to cardholder</string>
+    <string name="response_58">Issuer Do Not Allow The Card To Make This Deal In The POS</string>
+    <string name="response_59">Suspected fraud</string>
+    <string name="response_61">Exceeds withdrawal limit</string>
+    <string name="response_62">Restricted card</string>
+    <string name="response_63">Security violation</string>
+    <string name="response_64">Original amount incorrect</string>
+    <string name="response_65">Exceeds withdrawal frequency</string>
+    <string name="response_68">Issuer Response Timed-out</string>
+    <string name="response_75">PIN tries exceeded</string>
+
+    <string name="response_77">Intervene, bank approval required</string>
+    <string name="response_78">Intervene, bank approval required</string>
+
+    <string name="response_85">Not declined</string>
+    <string name="response_90">Cut-off in progress</string>
+    <string name="response_91">Issuer or switch inoperative</string>
+
+    <string name="response_92">Routing errorE</string>
+    <string name="response_94">Duplicate Transmission</string>
+    <string name="response_95">Reconcile error</string>
+    <string name="response_96">System Error</string>
+    <string name="response_99">PIN Block error</string>
+
+    <string name="response_D1">Incorrect IIN</string>
+    <string name="response_D2">Date error</string>
+    <string name="response_D8">Unsuccessful</string>
+
+    <string name="response_N1">Not DCC Eligible</string>
+    <string name="response_Q1">CARD AUTH FAIL</string>
+    <string name="response_Y1">OFFLINE APPROVAL</string>
+    <string name="response_Z1">OFFLINE DECLINE</string>
+    <string name="response_Y2">APPROVED</string>
+    <string name="response_Z2">DECLINED</string>
+    <string name="response_Y3">GO ONLINE FAIL</string>
+    <string name="response_Z3">GO ONLINE FAIL</string>
+    <string name="response_NA">NO UPDATE</string>
+    <string name="response_P0">ERROR SERIAL NO.</string>
+    <string name="response_XY">Duplicate Trans</string>
+    <string name="response_XX">NO DCC SGD REQ</string>
+
+    <string name="response_unknown">System Error</string>
+
+    <!--  -->
+    <string name="sale_set">Sale</string>
+    <string name="preAuthorization">Pre-authorization</string>
+    <string name="support">Support</string>
+    <string name="not_support">Not Support</string>
+    <string name="need">Need</string>
+    <string name="not_need">Not Need</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="form">Blank Form</string>
+    <string name="new_form">New</string>
+    <string name="outside">Outside</string>
+    <string name="inside">Inside</string>
+    <string name="input_len_err">Input Length Error</string>
+    <string name="input_has_chinese">Input Has Chinese</string>
+    <string name="input_err">Input Error</string>
+    <string name="transType_sale">Sale</string>
+    <string name="transType_void">Void</string>
+    <string name="transType_refund">Refund</string>
+    <string name="transType_auth">Pre-authorization</string>
+    <string name="transType_offline">Offline</string>
+    <string name="transType_print">Print</string>
+    <string name="transType_manage">Manage</string>
+    <string name="transType_others">Others</string>
+
+</resources>

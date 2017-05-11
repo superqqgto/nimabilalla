@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 交易管理 ,交易开关控制,传统类交易 -->
+    <string name="mobile">MOBILE</string>
+    <string name="wifi">WIFI</string>
+    <string name="demo">DEMO</string>
+
+    <string-array name="commParam_menu_comm_mode_list_entries">
+        <item>@string/mobile</item>
+        <item>@string/wifi</item>
+        <item>@string/demo</item>
+    </string-array>
+    <string-array name="commParam_menu_comm_mode_values_list_entries">
+        <item>@string/mobile</item>
+        <item>@string/wifi</item>
+        <item>@string/demo</item>
+    </string-array>
+    <string-array name="edc_ped_mode_entries">
+        <item>Internal</item>
+        <item>External</item>
+    </string-array>
+    <string-array name="auth_code_mode_entries">
+        <item>enter manually</item>
+        <item>TMS</item>
+    </string-array>
+    <string-array name="edc_ped_mode_value_entries">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="edc_connect_time_entries">
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+    </string-array>
+
+    <!-- 通讯参数的wifi -->
+    <string-array name="wifi_status">
+        <item>@string/wifi_scanning</item>
+        <item>@string/wifi_connecting</item>
+        <item>@string/wifi_authenticating</item>
+        <item>@string/wifi_getting_ip</item>
+        <item>@string/wifi_connected</item>
+        <item>@string/wifi_paused</item>
+        <item>@string/wifi_disconnecting</item>
+        <item>@string/wifi_disconnected</item>
+        <item>@string/wifi_failed</item>
+    </string-array>
+
+    <string-array name="keyManage_menu_key_des_type_list_entries">
+        <item>@string/keyManage_menu_des</item>
+        <item>@string/keyManage_menu_3des</item>
+    </string-array>
+
+    <!-- 其他管理,清除交易流水 -->
+    <string-array name="otherManage_menu_set_clear_func_list_entries">
+        <item>@string/om_clearTrade_menu_reversal</item>
+        <item>@string/om_clearTrade_menu_trade_voucher</item>
+        <item>@string/om_clearTrade_menu_deal_require</item>
+        <item>@string/om_clearTrade_menu_black_list</item>
+        <item>@string/om_clearTrade_menu_key</item>
+    </string-array>
+
+    <!-- 其他管理,下载功能 -->
+    <string-array name="otherManage_menu_set_download_list_entries">
+        <item>@string/om_download_menu_echo_test</item>
+        <item>@string/om_download_menu_parameter_pass</item>
+        <item>@string/om_download_menu_iccard_public_key</item>
+        <item>@string/om_download_menu_iccard_parameter</item>
+        <item>@string/om_download_menu_binb</item>
+        <item>@string/om_download_menu_binc</item>
+        <item>@string/om_download_tmk</item>
+    </string-array>
+
+    <!-- 其他管理,"参数打印" -->
+    <string-array name="otherManage_menu_set_para_print_list_entries">
+        <item>@string/om_paramPrint_menu_print_merchant_para</item>
+        <item>@string/om_paramPrint_menu_print_trade_para</item>
+        <item>@string/om_paramPrint_menu_print_sys_para</item>
+        <item>@string/om_paramPrint_menu_print_comm_para</item>
+        <item>@string/om_paramPrint_menu_print_version_para</item>
+        <item>@string/om_paramPrint_menu_print_other_para</item>
+    </string-array>
+
+    <!-- 其他管理,设置DCC partner-->
+    <string-array name="otherManage_menu_set_dcc_partner_list_entries">
+        <item>@string/om_dcc_partner_FEXCO</item>
+        <item>@string/om_dcc_partner_PC</item>
+        <item>@string/om_dcc_partner_FINTRAX</item>
+    </string-array>
+</resources>

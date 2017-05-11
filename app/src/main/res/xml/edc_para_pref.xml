@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="@string/edc_merchant_name"
+        android:key="EDC_MERCHANT_NAME_EN"
+        android:maxLength="60"
+        android:selectAllOnFocus="true"
+        android:title="@string/edc_merchant_name" />
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="@string/edc_merchant_address"
+        android:key="EDC_MERCHANT_ADDRESS"
+        android:selectAllOnFocus="true"
+        android:title="@string/edc_merchant_address" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:dialogTitle="@string/currency_list"
+        android:key="EDC_CURRENCY_LIST"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/currency_list" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:dialogTitle="@string/edc_ped_mode_prompt"
+        android:entries="@array/edc_ped_mode_entries"
+        android:entryValues="@array/edc_ped_mode_value_entries"
+        android:key="EDC_PED_MODE"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/edc_ped_mode" />
+    <ListPreference
+        android:defaultValue="30"
+        android:dialogTitle="@string/edc_connect_time"
+        android:entries="@array/edc_connect_time_entries"
+        android:entryValues="@array/edc_connect_time_entries"
+        android:key="EDC_CONNECT_TIMEOUT"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="Connect Time" />
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="1"
+        android:digits="1230"
+        android:ems="1"
+        android:inputType="number"
+        android:key="EDC_RECEIPT_NUM"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/edc_receipt_no" />
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="000001"
+        android:digits="1234567890"
+        android:ems="6"
+        android:inputType="number"
+        android:key="EDC_TRACE_NO"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/edc_trace_no" />
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="000001"
+        android:digits="1234567890"
+        android:ems="6"
+        android:inputType="number"
+        android:key="EDC_INVOICE_NUM"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Invoice No." />
+    <ListPreference
+        android:defaultValue="1"
+        android:dialogTitle="@string/auth_code_mode"
+        android:entries="@array/auth_code_mode_entries"
+        android:entryValues="@array/auth_code_mode_entries"
+        android:key="AUTH_CODE_MODE"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="Auth Code Mode" />
+    <com.pax.view.EditTextPreferenceFix
+        android:defaultValue="000005"
+        android:key="MOTO_FLOOR_LIMIT"
+        android:digits="1234567890"
+        android:inputType="number"
+        android:maxLength="12"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:title="Moto Floor Limit"  />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="EDC_SUPPORT_TIP"
+        android:summaryOff="@string/no"
+        android:summaryOn="@string/yes"
+        android:title="@string/edc_enable_tip" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="SUPPORT_DCC"
+        android:summaryOff="@string/no"
+        android:summaryOn="@string/yes"
+        android:title="@string/edc_enable_dcc" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="SUPPORT_MOTOSALE"
+        android:summaryOff="@string/no"
+        android:summaryOn="@string/yes"
+        android:title="@string/edc_enable_motosale" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="EDC_SUPPORT_KEYIN"
+        android:summaryOff="@string/no"
+        android:summaryOn="@string/yes"
+        android:title="@string/edc_support_keyin" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="SUPPORT_USER_AGREEMENT"
+        android:summaryOff="@string/no"
+        android:summaryOn="@string/yes"
+        android:title="@string/edc_enable_user_agreement" />
+
+    <PreferenceCategory
+        android:key="edc_info"
+        android:persistent="false"
+        android:title="Info"></PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="PAPERLESS"
+        android:persistent="false"
+        android:title="@string/paperless">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="EDC_ENABLE_PAPERLESS"
+            android:summaryOff="@string/no"
+            android:summaryOn="@string/yes"
+            android:title="@string/edc_enable_paperless" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:inputType="textUri"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:ems="50"
+            android:key="EDC_SMTP_HOST"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_host_name" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:ems="50"
+            android:key="EDC_SMTP_PORT"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_port" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:ems="50"
+            android:key="EDC_SMTP_USERNAME"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_username" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:ems="50"
+            android:key="EDC_SMTP_PASSWORD"
+            android:maxLength="50"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_password" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:key="EDC_SMTP_ENABLE_SSL"
+            android:summaryOff="@string/no"
+            android:summaryOn="@string/yes"
+            android:title="@string/edc_smtp_enable_ssl" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="EDC_SMTP_ENABLE_SSL"
+            android:ems="50"
+            android:key="EDC_SMTP_SSL_PORT"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_ssl_port" />
+        <com.pax.view.EditTextPreferenceFix
+            android:capitalize="words"
+            android:dependency="EDC_ENABLE_PAPERLESS"
+            android:ems="50"
+            android:key="EDC_SMTP_FROM"
+            android:maxLength="100"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:title="@string/edc_smtp_from" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

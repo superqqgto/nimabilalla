@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:layout_gravity="center_vertical">
+
+        <TextClock
+            android:id="@+id/lock_clock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/font_size_largest"
+            android:paddingBottom="@dimen/space_size_normal_large"
+            android:format24Hour="H:mm" />
+
+        <TextClock
+            android:layout_alignBottom="@+id/lock_clock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/font_size_smaller"
+            android:format24Hour="MMM dd, yyyy" />
+    </RelativeLayout>
+
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner_guide_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        app:banner_pageChangeDuration="1000"
+        app:banner_pointAutoPlayAble="true"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+        app:banner_indicatorGravity="right"
+        app:banner_transitionEffect="alpha" />
+
+    <TextView
+        android:id="@+id/unlock_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/club_icon_ubac"
+        android:layout_marginBottom="@dimen/space_size_small"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:text="@string/unlock_hint" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/pwd_small"
+        android:layout_margin="@dimen/space_size_small"
+        android:contentDescription="@string/image_desc" />
+</LinearLayout>

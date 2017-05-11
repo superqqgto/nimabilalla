@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include android:id="@id/expandable_toggle_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/trans_item_header"/>
+
+    <LinearLayout
+        android:id="@+id/expandable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_title_background"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:layout_marginEnd="@dimen/space_left_and_right">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_margin_top_small">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textView_infos"
+                android:gravity="bottom"
+                android:textSize="@dimen/font_size_small"
+                android:text="@string/history_detail_state"/>
+
+            <TextView
+                android:id="@+id/history_detail_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_stander_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_size_small">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textView_infos"
+                android:gravity="bottom"
+                android:textSize="@dimen/font_size_small"
+                android:text="@string/history_detail_card_no"/>
+
+            <TextView
+                android:id="@+id/history_detail_card_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_stander_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_size_small">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textView_infos"
+                android:gravity="bottom"
+                android:textSize="@dimen/font_size_small"
+                android:text="@string/history_detail_auth_code" />
+
+            <TextView
+                android:id="@+id/history_detail_auth_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_stander_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_size_small">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textView_infos"
+                android:gravity="bottom"
+                android:textSize="@dimen/font_size_small"
+                android:text="@string/history_detail_ref_no"/>
+
+            <TextView
+                android:id="@+id/history_detail_ref_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_stander_large" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/history_trans_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/history_trans_action_void"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:text="@string/trans_void"
+                android:drawableStart="@drawable/cx"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_small"
+                android:layout_marginStart="@dimen/space_left_and_right_normal_small"
+                android:layout_marginEnd="@dimen/space_left_and_right_normal_small"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+                android:id="@+id/history_trans_action_adjust"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:text="@string/trans_adjust"
+                android:drawableStart="@drawable/cx"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_small"
+                android:layout_marginStart="@dimen/space_left_and_right_normal_small"
+                android:layout_marginEnd="@dimen/space_left_and_right_normal_small"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+                android:id="@+id/history_trans_action_reprint"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:text="@string/trans_reprint"
+                android:drawableStart="@drawable/cd"
+                android:background="@drawable/button_background"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_small"
+                android:layout_marginStart="@dimen/space_left_and_right_normal_small"
+                android:layout_marginEnd="@dimen/space_left_and_right_normal_small"
+                style="?android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

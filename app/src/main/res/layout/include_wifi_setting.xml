@@ -1,0 +1,90 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/password_manage_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_left_and_right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="@string/signal_level"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger" />
+
+            <TextView
+                android:id="@+id/signal_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="bottom|end"
+                android:text="@string/strong"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_left_and_right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="@string/safety"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger" />
+
+            <TextView
+                android:id="@+id/security_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:text="@string/wifi_security_wpa_wpa2"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pwd_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_left_and_right"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/pwd"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger" />
+
+            <EditText
+                style="@style/UnSelectableEditView"
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edit"
+                android:gravity="center"
+                android:paddingStart="@dimen/space_left_and_right"
+                android:paddingEnd="@dimen/space_left_and_right"
+                android:scrollHorizontally="true"
+                android:maxLines="1"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/font_size_larger"
+                android:inputType="textPassword" />
+        </LinearLayout>
+    </LinearLayout>
+</merge>

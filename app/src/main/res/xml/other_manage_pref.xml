@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 清除功能 -->
+    <MultiSelectListPreference
+        android:dialogTitle="@string/otherManage_menu_set_clear_func"
+        android:entries="@array/otherManage_menu_set_clear_func_list_entries"
+        android:entryValues="@array/otherManage_menu_set_clear_func_list_entries"
+        android:key="OTHER_CLEAR_FUNC"
+        android:title="@string/otherManage_menu_set_clear_func" />
+
+    <!-- 下载功能 -->
+    <ListPreference
+        android:dialogTitle="@string/otherManage_menu_set_download"
+        android:entries="@array/otherManage_menu_set_download_list_entries"
+        android:entryValues="@array/otherManage_menu_set_download_list_entries"
+        android:key="OTHER_DOWNLOAD_FUNC"
+        android:title="@string/otherManage_menu_set_download" />
+    <!-- 参数打印 -->
+    <ListPreference
+        android:dialogTitle="@string/otherManage_menu_set_para_print"
+        android:entries="@array/otherManage_menu_set_para_print_list_entries"
+        android:entryValues="@array/otherManage_menu_set_para_print_list_entries"
+        android:key="OTHER_PRINT_PARAM"
+        android:title="@string/otherManage_menu_set_para_print" />
+    <!-- 选择DCC partner -->
+    <ListPreference
+        android:dialogTitle="@string/otherManage_menu_set_dcc_partner"
+        android:entries="@array/otherManage_menu_set_dcc_partner_list_entries"
+        android:entryValues="@array/otherManage_menu_set_dcc_partner_list_entries"
+        android:key="SELECT_DCC_PARTNER"
+        android:defaultValue = "@string/om_dcc_partner_FINTRAX"
+        android:title="@string/otherManage_menu_set_dcc_partner" />
+</PreferenceScreen>

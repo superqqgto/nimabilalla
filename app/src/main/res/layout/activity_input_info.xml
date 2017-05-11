@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryBackground"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_margin_top_small"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/prompt_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/space_margin_top_small"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:text="@string/prompt_input_auth_code"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_normal" />
+
+                <com.pax.view.keyboard.CustomKeyboardEditText
+                    android:id="@+id/prompt_edit_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_height"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/font_size_normal"
+                    app:xml="@xml/numeric_keyboard" />
+
+                <ImageView
+                    style="@style/LongLine"
+                    android:contentDescription="@string/image_desc" />
+
+                <TextView
+                    android:id="@+id/prompt_extraNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_margin_top_small"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/prompt_input_date"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_normal" />
+
+                <com.pax.view.keyboard.CustomKeyboardEditText
+                    android:id="@+id/prompt_edit_extraNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_height"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:textSize="@dimen/font_size_normal"
+                    app:xml="@xml/numeric_keyboard" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/start_scanner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:src="@drawable/scanner"
+            android:visibility="visible"
+            android:gravity="end"
+            android:contentDescription="@string/image_desc" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/infos_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/space_height_larger"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:background="@drawable/button_background"
+        android:text="@string/dialog_ok"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_normal" />
+
+</LinearLayout>

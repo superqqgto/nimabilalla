@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:layout_margin="0dp"
+    android:background="@drawable/grid_view_bg"
+    android:paddingBottom="@dimen/space_size_normal_large"
+    android:paddingTop="@dimen/space_size_normal_large">
+
+    <ImageView
+        android:id="@+id/iv_item"
+        android:layout_width="@dimen/grid_item"
+        android:layout_height="@dimen/grid_item"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/app_name" />
+
+    <com.pax.view.AlwaysMarqueeTextView
+        android:id="@+id/tv_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_item"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space_left_and_right_small"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/common_text_color"
+        android:textSize="@dimen/font_size_small" />
+</RelativeLayout>

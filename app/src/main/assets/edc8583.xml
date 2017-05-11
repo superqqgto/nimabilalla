@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+History:
+	Date			Revision			
+	20161118		initial
+=================================================================================================================
+  This is the template for EDC ISO8583, it defines the necessary attributes for packing/unpacking.
+With this, you can define the attributes with a friendly interface, instead of setting them one by one
+in the code. Of course, you can also set all these attributes in the code when necessary.
+  The attributes are listed as follows:
+  1. global settings
+    1) secondary_bitmap(opt.)
+      indicating if secondary bitmap(i.e. filed 1) exists or not, "YES" for true, "NO" otherwise, default to "NO".
+    2) var_len_format(opt.)
+      the format of the variable length(i.e. L/LL/LLL), can be "BCD"/"ASC"/"BIN", default to "BCD"
+      i)   BCD: BCD
+      * for LVAR, 1 byte, range 0~9;
+      * for LLVAR, 1 byte, range 0~99;
+      * for LLLVAR, 2 bytes, range 0~999;
+      ii)  ASC: ASCII
+      * for LVAR, 1 byte, range 0~9;
+      * for LLVAR, 2 byte, range 0~99;
+      * for LLLVAR, 3 bytes, range 0~999;
+      iii) BIN: BINARY
+      * for LVAR, 1 byte, range 0~0xF;
+      * for LLVAR, 1 byte, range 0~0xFF;
+      * for LLLVAR, 2 bytes, range 0~0xFFF;
+      
+  2. field settings
+    1) id (mandatory)
+      h: header, including TPDU and some other proprietary fields
+      m: msg id
+      2~...: field x
+    2) format (mandatory)
+      	format for both packing and unpacking. For unpacking, can be overrided by 'format_unpack'.
+      	currently supports "A"/"N"/"S"/"AN"/"AS"/"ANS"/"B"/"Z"
+        for variable length format, use ".x/..xx/...xxx"
+        e.g. Alpha 10 bytes: "A10";  Binary 64 bits: "B64";  Alphanumeric LLVAR with max length 80: "AN..80"
+    3) format_unpack (opt.)
+    	see introduction of 'format'
+        if exists, used for unpacking(i.e. override 'format' for unpacking)
+    4) paddingpos (opt.)
+        padding position for both packing and unpacking, if not exists, use default  
+        paddingpos="L"(i.e. right-aligned),  paddingpos="R"(i.e. left-aligned)
+      	rules are as follows:
+        i) format "N"/"Z" with odd length.  By default, it's paddingpos="L"(i.e. right-aligned);
+        ii) format "B"/"S", this is ignored (i.e. the length provided value MUST equals to the fields' length);
+        ii) format "A"/"AN"/"ANS"/"AS" with FIXED length, but length of value provided is less than the fields' length. By default, paddingpos="L"(i.e. right-aligned)
+    5) paddingpos_unpack (opt.)
+    	see introduction of 'paddingpos'
+        if exists, used for unpacking(i.e. override 'paddingpos' for unpacking)
+    6) paddingchar (opt.)
+        padding character, for both packing and unpacking, if not exists, use default.
+        i) format "N"/"Z" with odd length, this is ignored(i.e. it's always padded with '0');
+        ii) format "B"/"S", this is ignored (i.e. the length provided value MUST equals to the field's length);
+        ii) format "A"/"AN"/"ANS"/"AS" with FIXED length, but length of value provided is less than the field's length. By default, padding char is blank space ' ';
+    7) paddingchar_unpack (opt.)
+    	see introduction of 'paddingchar'
+        if exists, used for padding character for unpacking 
+    8) desc (opt.)
+        description, it's mainly for debug purpose.
+
+NOTE:
+  If you need to define fields above 64, 'secondary_bitmap' MUST be set to "YES" first;
+  Field 65 is specially for tertiary bitmap, setting format or value to this field is ignored internally;
+  For Android, typically you can place this file into assets.  
+-->
+<iso8583 secondary_bitmap="NO" var_len_format="BCD">
+    <field id="h" format="N10" desc="header" />    <!-- example: 6000380000 -->
+    <field id="m" format="N4" desc="msg_id" />
+    <field id="2" format="N..19" desc="主账号(Primary Account Number)" />
+    <field id="3" format="N6" desc="交易处理码(Transaction Processing Code)" />
+    <field id="4" format="N12" desc="交易金额(Amount Of Transactions)" />
+    <field id="5" format="N12" desc="DCC交易金额(Amount Of DCC Transactions)" />
+    <field id="9" format="N8" desc="DCC转换汇率(Conversion Rate Of DCC Transactions)" />
+    <field id="11" format="N6" desc="受卡方系统跟踪号(System Trace Audit Number)" />
+    <field id="12" format="N6" desc="受卡方所在地时间(Local Time Of Transaction)" />
+    <field id="13" format="N4" desc="受卡方所在地日期(Local Date Of Transaction)" />
+    <field id="14" format="N4" desc="卡有效期(Date Of Expired)" />
+    <field id="22" format="N3" paddingpos="R"
+        desc="服务点输入方式码(Point Of Service Entry Mode)" />    <!-- NOTE: by default, N is left-padding -->
+    <field id="23" format="N3" desc="卡序列号(Card Sequence Number)" />
+    <field id="24" format="N3" desc="NII" />
+    <field id="25" format="N2" desc="服务点条件码(Point Of Service Condition Mode)" />
+    <field id="35" format="Z..37" desc="2磁道数据(Track 2 Data)" />
+    <field id="36" format="Z...104" desc="3磁道数据(Track 3 Data)" />
+    <field id="37" format="AN12" desc="检索参考号(Retrieval Reference Number)" />
+    <field id="38" format="AN6" desc="授权标识应答码(Authorization Identification Response Code)" />
+    <field id="39" format="AN2" desc="应答码(Response Code)" />
+    <field id="41" format="ANS8" desc="受卡机终端标识码(Card Acceptor Terminal Identification)" />
+    <field id="42" format="ANS15" desc="受卡方标识码(Card Acceptor Identification Code)" />
+    <field id="44" format="AN..25" desc="附加响应数据(Additional Response Data)" />
+    <field id="45" format="AN..76" desc="1磁道数据(Track 1 Data)" />
+    <field id="48" format="ANS...100" desc="附加响应数据(Additional Response Data)" />
+    <field id="49" format="ANS3" desc="DCC交易货币(Currency Of DCC Transactions)" />
+    <field id="52" format="B64" desc="个人标识码数据(PIN Data)" />
+    <field id="53" format="N16" desc="安全控制信息(Security Related Control Information)" />
+    <field id="54" format="AN...020" desc="余额(Balance Amount)" />
+    <!-- NOTE: treat it as ANS, just copy bytes-->
+    <field id="55" format="ANS...255" desc="IC卡数据域(Integrated Circuit Card System Related Data)" />
+    <field id="60" format="ANS...22" desc="自定义域(Reserved Private)" />
+    <field id="61" format="ANS...29" desc="原始信息域(Original Information)" />
+    <field id="62" format="ANS...100" desc="自定义域(Reserved Private)" />
+    <field id="63" format="ANS...800" desc="自定义域(Reserved Private)" />
+    <field id="64" format="B64" desc="报文鉴别码(Message Authentication Code)" />
+</iso8583>

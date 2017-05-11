@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_horizontal"
+    android:background="#DBDBDB"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/prompt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/prompt_sys_pwd"
+        android:textSize="@dimen/font_size_normal" />
+
+    <EditText
+        android:id="@+id/pwd_input_text"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/edit_frame"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:textSize="@dimen/font_size_large"
+        android:hint=""/>
+
+    <FrameLayout
+        android:id="@+id/fl_trans_softKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.pax.view.SoftKeyboardPwdStyle
+            android:id="@+id/soft_keyboard_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+    </FrameLayout>
+</LinearLayout>

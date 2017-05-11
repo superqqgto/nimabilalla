@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.pax.pay.MainActivity">
+
+    <TextView
+        android:id="@+id/edt_input_pin_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="@dimen/font_size_normal" />
+
+    <EditText
+        android:id="@+id/edt_input_pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:inputType="numberPassword"
+        android:hint="@string/prompt_use_pinpad"
+        android:textColor="#000000" />
+
+</LinearLayout>

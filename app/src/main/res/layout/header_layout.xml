@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_header"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/space_height_large"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/header_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/btn_back"
+        android:contentDescription="@string/image_desc" />
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/header_title"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_large" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/header_title"
+        android:gravity="end|center_vertical">
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_left_and_right_normal_small"
+            android:layout_marginEnd="@dimen/space_left_and_right_normal_small"
+            android:src="@drawable/f"
+            android:visibility="gone"
+            android:contentDescription="@string/image_desc" />
+
+        <ImageView
+            android:id="@+id/print_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_left_and_right"
+            android:layout_marginEnd="@dimen/space_left_and_right"
+            android:src="@drawable/h"
+            android:visibility="gone"
+            android:contentDescription="@string/image_desc" />
+
+        <TextView
+            android:id="@+id/header_title_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/space_left_and_right"
+            android:layout_marginEnd="@dimen/space_left_and_right"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:textSize="@dimen/font_size_normal_small" />
+    </LinearLayout>
+
+</RelativeLayout>

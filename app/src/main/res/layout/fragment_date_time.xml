@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/gray_title_background"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:textColor="@color/textView_infos"
+        android:textSize="@dimen/font_size_small"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="@dimen/space_left_and_right_small"
+        android:layout_marginTop="@dimen/space_size_normal" />
+
+    <TextClock
+        android:id="@+id/system_date"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:textColor="@color/cancel_button_text"
+        android:textSize="@dimen/font_size_normal_small"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginTop="@dimen/space_size_small"
+        android:layout_marginBottom="@dimen/space_size_large"
+        android:background="@color/white"
+        android:format24Hour="MMM dd, yyyy" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:textColor="@color/textView_infos"
+        android:textSize="@dimen/font_size_small"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="@dimen/space_left_and_right_small"
+        android:layout_marginTop="@dimen/space_size_normal" />
+
+    <TextClock
+        android:id="@+id/system_time"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:textColor="@color/cancel_button_text"
+        android:textSize="@dimen/font_size_normal_small"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginTop="@dimen/space_size_small"
+        android:layout_marginBottom="@dimen/space_size_large"
+        android:background="@color/white"
+        android:format24Hour="H:mm" />
+
+    <Button
+        android:id="@+id/system_timezone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="timezone"/>
+</LinearLayout>

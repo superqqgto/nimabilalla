@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/layout_header"
+        layout="@layout/header_layout" />
+
+    <!-- ======================================================默认读卡界面==================================================== -->
+
+    <LinearLayout
+        android:id="@+id/searchCard_default_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryBackground"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <com.pax.view.ClssLightView
+            android:id="@+id/clssLight"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/space_margin_top_small"
+            android:visibility="gone" />
+
+        <!-- 显示金额 -->
+        <LinearLayout
+            android:id="@+id/amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="36dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="@string/base_amount"
+                android:textColor="@color/prompt_no_pwd_color"
+                android:textSize="@dimen/font_size_normal_small" />
+
+            <TextView
+                android:id="@+id/amount_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|end"
+                android:text="@string/amount_default"
+                android:textColor="@color/trans_amount_color"
+                android:textSize="@dimen/font_size_normal" />
+        </LinearLayout>
+
+        <!-- EditText 账号 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_left_and_right_small"
+            android:layout_marginStart="@dimen/space_left_and_right_small"
+            android:background="@drawable/edit_cardno_frame"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_prompt_readcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_left_and_right"
+                android:layout_marginTop="@dimen/space_left_and_right"
+                android:text="@string/prompt_default_searchCard_prompt"
+                android:textColor="@color/common_text_color"
+                android:textSize="@dimen/font_size_normal" />
+
+            <ImageView
+                style="@style/LongLine"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/keyboard_background_color"
+                android:contentDescription="@string/image_desc" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:orientation="horizontal">
+
+                <com.pax.view.keyboard.CustomKeyboardEditText
+                    android:id="@+id/bank_card_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:cursorVisible="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:hint="@string/prompt_card_num_manual"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_size_large"
+                    app:xml="@xml/numeric_keyboard_confirm" />
+
+                <com.pax.view.keyboard.CustomKeyboardEditText
+                    android:id="@+id/bank_card_expdate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:cursorVisible="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:hint="@string/prompt_date_default"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_size_normal"
+                    android:visibility="gone"
+                    app:xml="@xml/numeric_keyboard_confirm" />
+            </LinearLayout>
+
+            <ImageView
+                style="@style/LongLine"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/keyboard_background_color"
+                android:contentDescription="@string/image_desc" />
+
+            <TextView
+                android:id="@+id/bank_card_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textSize="@dimen/font_size_normal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 刷卡、插卡、挥卡 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space_size_normal"
+        android:layout_marginEnd="@dimen/space_left_and_right"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- 确定按键 -->
+        <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/supported_reader_types"
+            android:background="@drawable/button_background"
+            android:text="@string/dialog_ok"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_normal"
+            android:visibility="invisible" />
+
+        <com.pax.view.ReaderTypesView
+            android:id="@+id/supported_reader_types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</RelativeLayout>

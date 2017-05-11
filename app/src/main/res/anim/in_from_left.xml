@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 从屏幕左边退出，先退后2%p位置，再向左退出 -->
+
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="100"
+    android:fromXDelta="-100%p"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:toXDelta="0%p">
+
+</translate>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_login"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_height_normal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/logo_shape"
+                android:contentDescription="@string/image_desc" />
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="35.5dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/logo_pax"
+                android:contentDescription="@string/image_desc" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/operator_pwd_edt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:focusable="true"
+            android:maxLength="8"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textSize="@dimen/font_size_large"
+            android:textColor="@android:color/white"
+            android:hint="@string/init_pwd_hint"
+            android:layout_marginTop="@dimen/space_height_larger" />
+
+        <ImageView
+            style="@style/LongLine"
+            android:src="@drawable/line"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:layout_marginBottom="@dimen/space_height_normal"
+            android:contentDescription="@string/image_desc" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_trans_softKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <com.pax.view.SoftKeyboardPwdStyle
+            android:id="@+id/soft_keyboard_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+    </FrameLayout>
+
+</LinearLayout>

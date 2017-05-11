@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+
+    <!-- Primary color -->
+    <color name="colorPrimaryDark">#173d71</color>
+    <color name="colorPrimary">#2f6ab8</color>
+
+    <!-- Login button color normal -->
+    <color name="login_button_color">#0ca1f7</color>
+
+    <!-- Background color -->
+    <color name="colorPrimaryBackground">#ebebeb</color>
+
+    <!-- KeyBoard background -->
+    <color name="keyboard_background_color">#cccccc</color>
+
+    <!-- Trans Amount color -->
+    <color name="trans_amount_color">#FD4800</color>
+    <color name="success_stroke_color">#00B3B0</color>
+    <!-- unimportant text color -->
+    <color name="prompt_text_color">#858585</color>
+
+    <!-- prompt -->
+    <color name="prompt_no_pwd_color">#666666</color>
+
+    <!-- version -->
+    <color name="prompt_version">#FF0000</color>
+
+    <!-- GridView color -->
+    <color name="grid_item_bg">#ffe8ecef</color>
+    <color name="line">#ffd3dde6</color>
+    <color name="common_text_color">#ff333333</color>
+    <color name="float_transparent">#00000000</color>
+
+    <!-- CustomKeyboard color -->
+    <color name="key_normal_color">#ffffff</color>
+    <color name="key_selected_color">#b8bcc0</color>
+    <color name="opkey_selected_color">#cbcfd5</color>
+    <color name="ok_normal_color">#ff18a117</color>
+    <color name="ok_selected_color">#ff138112</color>
+
+    <!-- CustomAlertDialog color -->
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="error_stroke_color">#FF0000</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="cancel_button_text">#333333</color>
+
+    <!--swipe card error prompt-->
+    <color name="red">#FF0000</color>
+
+    <!-- query operator table unit edge -->
+    <color name="gray_input_pin_bg">#DDDDDD</color>
+
+    <!-- Toast background color -->
+    <color name="toast_background">#858585</color>
+
+    <!-- guide dot color  -->
+    <color name="guide_dot_normal">#ffd0ccc7</color>
+    <color name="guide_dot_select">#ff004169</color>
+
+    <!-- input dialog-->
+    <color name="textView_infos">#666666</color>
+    <color name="textEdit_hint">#999999</color>
+
+    <!-- PagerSlidingTab -->
+    <color name="background_tab_pressed">#88ebebeb</color>
+
+    <!-- PagerSlidingTab -->
+    <color name="gray_title_background">#F1F1F1</color>
+
+    <!-- font color -->
+    <color name="text_font_blue">#0034F8</color>
+    <color name="text_font_black">#ff000000</color>
+    <!-- -->
+    <color name="list_background">#3500ffff</color>
+</resources>

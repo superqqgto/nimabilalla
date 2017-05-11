@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/gray_title_background"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/acquirer_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/acq_select_hint" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/acquirer_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_is_default"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/acquirer_is_default" />
+
+                <CheckBox
+                    android:id="@+id/acquirer_is_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_terminal_id"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/terminal_id" />
+
+                <EditText
+                    android:id="@+id/terminal_id"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end|center"
+                    android:maxLines="1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:maxLength="8"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical"
+                    android:inputType="text"
+                    android:hint="@string/acq_terminal_id_hint" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_merchant_id"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/merchant_id" />
+
+                <EditText
+                    android:id="@+id/merchant_id"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end|center"
+                    android:maxLines="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:maxLength="15"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:inputType="text"
+                    android:hint="@string/acq_merchant_id_hint" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:text="@string/acq_nii"
+                    android:layout_toStartOf="@+id/nii_acq" />
+
+                <EditText
+                    android:id="@+id/nii_acq"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical|end"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:hint="@string/acq_nii_hint"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:maxLength="3"
+                    android:inputType="number" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_batch_no"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/batch_num" />
+
+                <EditText
+                    android:id="@+id/batch_num"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:maxLength="6"
+                    android:background="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical|end"
+                    android:inputType="number"
+                    android:hint="@string/acq_batch_no_hint" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_commParam"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/commParam_image" />
+
+                <ImageView
+                    android:id="@+id/commParam_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/set_more"
+                    android:contentDescription="@string/image_desc" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acq_ip"
+                android:layout_marginStart="@dimen/space_left_and_right"
+                android:textColor="@color/textView_infos"
+                android:textSize="@dimen/font_size_small"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal" />
+
+            <LinearLayout
+                android:id="@+id/acq_ip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/acq_ip"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:maxLines="1"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical|end"
+                    android:inputType="text"
+                    android:hint="@string/acq_ip_hint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text=":" />
+
+                <EditText
+                    android:id="@+id/acq_ip_port"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:maxLength="6"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_gravity="center_vertical|end"
+                    android:inputType="number"
+                    android:hint="@string/acq_port_hint" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/acq_disable_trick_feed"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/acquirer_disable_trick_feed" />
+
+                <CheckBox
+                    android:id="@+id/acquirer_disable_trick_feed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/item_select_acq_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/selection_round_check_box_background"
+        android:layout_marginStart="@dimen/space_left_and_right"
+        android:padding="@dimen/space_left_and_right"/>
+
+    <TextView
+        android:id="@id/expandable_toggle_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_left_and_right"
+        android:textColor="@color/cancel_button_text"
+        android:background="@drawable/selection_textview_background"
+        android:textSize="@dimen/font_size_small"
+        android:text="@string/acq_select_all" />
+</LinearLayout>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading"
+    android:layout_width="@dimen/alert_width"
+    android:layout_height="@dimen/alert_height"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/custom_image"
+            android:layout_width="@dimen/dialog_icon"
+            android:layout_height="@dimen/dialog_icon"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/error_frame"
+            android:layout_width="@dimen/dialog_icon"
+            android:layout_height="@dimen/dialog_icon"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/error_circle" />
+
+            <ImageView
+                android:id="@+id/error_x"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="center"
+                android:src="@drawable/error_center_x" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/success_frame"
+            android:layout_width="@dimen/dialog_icon"
+            android:layout_height="@dimen/dialog_icon"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/success_bow" />
+
+            <View
+                android:id="@+id/mask_right"
+                android:layout_width="35dp"
+                android:layout_height="80dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="-13dp"
+                android:background="@android:color/white" />
+
+            <View
+                android:id="@+id/mask_left"
+                android:layout_width="21dp"
+                android:layout_height="60dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="-3dp"
+                android:background="@android:color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/success_circle" />
+
+            <com.pax.view.dialog.SuccessTickView
+                android:id="@+id/success_tick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/progress_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.pax.view.dialog.ProgressWheel
+                android:id="@+id/progressWheel"
+                android:layout_width="@dimen/process_wheel"
+                android:layout_height="@dimen/process_wheel"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/countView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_smaller" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_normal"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/input_edtxt_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/space_left_and_right"
+            android:layout_marginEnd="@dimen/space_left_and_right"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/input_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_height"
+                android:background="@drawable/edit_frame"
+                android:gravity="end|center_vertical"
+                android:inputType="numberPassword"
+                android:maxLength="8"
+                android:textSize="@dimen/font_size_large"
+                android:hint="" />
+
+            <TextView
+                android:id="@+id/input_err_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/err_password"
+                android:textColor="@color/error_stroke_color"
+                android:textSize="@dimen/font_size_normal"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/normal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_height_larger"
+            android:layout_marginTop="@dimen/space_height_larger"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_small"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_size_small"
+            android:layout_marginTop="@dimen/space_size_small"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_size_small"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/dialog_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/cancel_button_background"
+            android:text="@string/dialog_cancel"
+            android:textColor="@color/cancel_button_text"
+            android:textSize="@dimen/font_size_normal"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/dialog_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/dialog_ok"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_normal"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

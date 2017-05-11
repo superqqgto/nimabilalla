@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_title_background">
+
+    <Spinner
+        android:id="@+id/issuer_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/issuer_select_hint" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/issuer_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_floor_limit"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:maxLines="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/issuer_floor_limit" />
+
+                <com.pax.view.keyboard.CustomKeyboardEditText
+                    android:id="@+id/issuer_floor_limit"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_centerVertical="true"
+                    android:inputType="text"
+                    android:hint=""
+                    app:xml="@xml/amount_keyboard_standard" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_enable_adjust"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_enable_adjust" />
+
+                <CheckBox
+                    android:id="@+id/issuer_enable_adjust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_adjust_percent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:maxLines="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toStartOf="@+id/issuer_adjust_percent" />
+
+                <EditText
+                    android:id="@+id/issuer_adjust_percent"
+                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/alert_width_small"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/white"
+                    android:textColor="@color/cancel_button_text"
+                    android:textSize="@dimen/font_size_normal_small"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:layout_centerVertical="true"
+                    android:inputType="numberDecimal"
+                    android:hint="" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_enable_offline"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_enable_offline" />
+
+                <CheckBox
+                    android:id="@+id/issuer_enable_offline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_enable_expiry"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_enable_expiry" />
+
+                <CheckBox
+                    android:id="@+id/issuer_enable_expiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_enable_manualPan"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_enable_manualPan" />
+
+                <CheckBox
+                    android:id="@+id/issuer_enable_manualPan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_check_adjust"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_check_expiry" />
+
+                <CheckBox
+                    android:id="@+id/issuer_check_expiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_check_pan"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_check_pan" />
+
+                <CheckBox
+                    android:id="@+id/issuer_check_pan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_enable_print"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_enable_print" />
+
+                <CheckBox
+                    android:id="@+id/issuer_enable_print"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_left_and_right_small"
+                android:paddingBottom="@dimen/space_left_and_right_small"
+                android:layout_marginTop="@dimen/space_size_normal"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/issuer_pin_required"
+                    android:layout_marginStart="@dimen/space_left_and_right"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textView_infos"
+                    android:textSize="@dimen/font_size_small"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_toStartOf="@+id/issuer_pin_required" />
+
+                <CheckBox
+                    android:id="@+id/issuer_pin_required"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/space_size_small"
+                    android:paddingEnd="0dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_left_and_right"
+                    android:button="@drawable/selection_square_check_box_background"
+                    android:layout_gravity="center_vertical" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
