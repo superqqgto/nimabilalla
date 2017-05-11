@@ -85,8 +85,6 @@ public class SettleActivity extends BaseActivityWithTickForAction {
         super.onCreate(savedInstanceState);
 //        if (SpManager.getControlSp().getInt(ControllerSp.BATCH_UP_STATUS) == ControllerSp.Constant.BATCH_UP) {
         settleBtn.setVisibility(View.INVISIBLE);
-        Log.e(TAG, "onCreate: before performClick" );
-        //fixme linzhao
         settleBtn.performClick();
 //        }
     }
