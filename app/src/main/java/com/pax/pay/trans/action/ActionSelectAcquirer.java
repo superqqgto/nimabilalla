@@ -17,7 +17,6 @@ package com.pax.pay.trans.action;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.pax.abl.core.AAction;
 import com.pax.pay.constant.EUIParamKeys;
@@ -35,7 +34,6 @@ public class ActionSelectAcquirer extends AAction {
     }
 
     private String title;
-    public static final String TAG = ActionSelectAcquirer.class.getSimpleName();
 
     public void setParam(String title) {
         this.title = title;
@@ -43,7 +41,6 @@ public class ActionSelectAcquirer extends AAction {
 
     @Override
     protected void process() {
-        Log.e(TAG, "process" );
         Context context = ContextUtils.getActyContext();
         Intent intent = new Intent(context, SelectAcqActivity.class);
         Bundle bundle = new Bundle();

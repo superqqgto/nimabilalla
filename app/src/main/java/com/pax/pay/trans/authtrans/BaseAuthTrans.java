@@ -12,6 +12,7 @@ import com.pax.pay.trans.action.ActionDispTransDetail;
 import com.pax.pay.trans.action.ActionEnterAmount;
 import com.pax.pay.trans.action.ActionEnterAuthCode;
 import com.pax.pay.trans.action.ActionEnterPin;
+import com.pax.pay.trans.action.ActionOfflineSend;
 import com.pax.pay.trans.action.ActionPrintPreview;
 import com.pax.pay.trans.action.ActionPrintTransReceipt;
 import com.pax.pay.trans.action.ActionSearchCard;
@@ -44,6 +45,7 @@ public abstract class BaseAuthTrans extends BaseTrans {
         ENTER_PIN,//输入卡密码
         ONLINE,//联机处理
         SIGNATURE,//签名
+        OFFLINE_SEND, //上传offline交易，piggyback
         PRINT_PREVIEW,//打印预览
         PRINT_RECEIPT//打印收据
     }
@@ -88,9 +90,10 @@ public abstract class BaseAuthTrans extends BaseTrans {
                         transData.setEnterMode(origTransData.getEnterMode());
                         transData.setTrack2(origTransData.getTrack2());
                         transData.setTrack3(origTransData.getTrack3());
+                        transData.setOrigDateTime(origTransData.getDateTime());
 
                         // date and time
-                        String formattedDate = TimeConverter.convert(transData.getDateTime(), Constants.TIME_PATTERN_TRANS,
+                        String formattedDate = TimeConverter.convert(transData.getOrigDateTime(), Constants.TIME_PATTERN_TRANS,
                                 Constants.TIME_PATTERN_DISPLAY);
 
                         LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -191,6 +194,18 @@ public abstract class BaseAuthTrans extends BaseTrans {
                 });
 
         bind(State.SIGNATURE.toString(), signBuilder.create());
+    }
+
+    protected void bindOfflienSend() {
+        ActionOfflineSend.Builder offlineSendBuilder = new ActionOfflineSend.Builder()
+                .startListener(new AAction.ActionStartListener() {
+                    @Override
+                    public void onStart(AAction action) {
+                        ((ActionOfflineSend) action).setTransData(transData);
+                    }
+                });
+
+        bind(MotoPreAuthTrans.State.OFFLINE_SEND.toString(), offlineSendBuilder.create());
     }
 
     protected void bindPrintPreview() {

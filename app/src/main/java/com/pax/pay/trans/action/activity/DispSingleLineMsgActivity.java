@@ -94,7 +94,7 @@ public class DispSingleLineMsgActivity extends BaseActivityWithTickForAction {
     @OnClick({R.id.header_back, R.id.confirm_btn})
     public void onViewClicked(View view) {
 
-        if (QuickClickUtils.isFastDoubleClick(view)) {
+        if (QuickClickUtils.isFastDoubleClick()) {
             return;
         }
 

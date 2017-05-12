@@ -10,17 +10,22 @@ import com.pax.pay.trans.BaseTrans;
 import com.pax.pay.trans.TransResult;
 import com.pax.pay.trans.action.ActionDispTransDetail;
 import com.pax.pay.trans.action.ActionInputTransData;
+import com.pax.pay.trans.action.ActionOfflineSend;
 import com.pax.pay.trans.action.ActionSearchCard;
 import com.pax.pay.trans.component.Component;
+import com.pax.pay.trans.model.BaseTransData;
 import com.pax.pay.trans.model.ETransType;
 import com.pax.pay.trans.model.MotoTabBatchTransData;
 import com.pax.pay.trans.model.TabBatchTransData;
+import com.pax.pay.trans.model.TransData;
 import com.pax.pay.utils.ContextUtils;
 import com.pax.pay.utils.CurrencyConverter;
 import com.pax.pay.utils.TimeConverter;
 import com.pax.pay.utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * Created by zhouhong on 2017/5/6.
@@ -50,9 +55,10 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
                         transData.setEnterMode(origTransData.getEnterMode());
                         transData.setTrack2(origTransData.getTrack2());
                         transData.setTrack3(origTransData.getTrack3());
+                        transData.setOrigDateTime(origTransData.getDateTime());
 
                         // date and time
-                        String formattedDate = TimeConverter.convert(transData.getDateTime(), Constants.TIME_PATTERN_TRANS,
+                        String formattedDate = TimeConverter.convert(transData.getOrigDateTime(), Constants.TIME_PATTERN_TRANS,
                                 Constants.TIME_PATTERN_DISPLAY);
 
                         LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -155,7 +161,6 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
             gotoState(State.SIGNATURE.toString());
         }
         DbManager.getTransDao().updateTransData(transData);
-        DbManager.getMotoTabBatchTransDao().deleteTransDataByTraceNo(origTransData.getTraceNo());
         gotoState(State.SIGNATURE.toString());
     }
 
@@ -168,11 +173,28 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
             // update trans data，save signature
             DbManager.getTransDao().updateTransData(transData);
         }
+
+        //get offline trans data list， piggyback
+        List<TransData.OfflineStatus> filter = new ArrayList<>();
+        filter.add(TransData.OfflineStatus.OFFLINE_NOT_SENT);
+        List<TransData> offlineTransList = DbManager.getTransDao().findOfflineTransData(filter);
+        if (offlineTransList != null) {
+            if (offlineTransList.size() != 0 && offlineTransList.get(0).getId() != transData.getId()) { //AET-92
+                //offline send
+                gotoState(State.OFFLINE_SEND.toString());
+            }
+        }
+        else {
+            gotoState(State.PRINT_PREVIEW.toString());
+        }
+    }
+
+    protected void deleteTransFromMotoTabBatch() {
+        DbManager.getMotoTabBatchTransDao().deleteTransDataByTraceNo(origTransData.getTraceNo());
     }
 
     // set original trans data
     //origTransData的数据类型的区别导致重写函数
-    @Override
     protected void copyOrigTransData() {
         transData.setAmount(origTransData.getAmount());
         transData.setOrigBatchNo(origTransData.getBatchNo());
@@ -185,4 +207,5 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
         transData.setAcquirer(origTransData.getAcquirer());
         transData.setIssuer(origTransData.getIssuer());
     }
+
 }

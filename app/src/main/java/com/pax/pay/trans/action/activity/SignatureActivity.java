@@ -144,7 +144,7 @@ public class SignatureActivity extends BaseActivityWithTickForAction {
     @OnClick({R.id.clear_btn, R.id.confirm_btn})
     public void onViewClicked(View view) {
 
-        if(QuickClickUtils.isFastDoubleClick(view)){
+        if(QuickClickUtils.isFastDoubleClick()){
             return;
         }
 

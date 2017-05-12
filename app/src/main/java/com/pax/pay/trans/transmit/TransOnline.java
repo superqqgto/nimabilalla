@@ -14,8 +14,6 @@
  */
 package com.pax.pay.trans.transmit;
 
-import android.util.Log;
-
 import com.pax.device.Device;
 import com.pax.edc.R;
 import com.pax.gl.algo.IAlgo;
@@ -43,7 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.pax.dal.exceptions.PedDevException;
 
-
 /**
  * 单独联机处理， 例如签到
  *
@@ -57,8 +54,6 @@ public class TransOnline {
      * @param listener
      * @return
      */
-    public static final String TAG = TransOnline.class.getSimpleName();
-
     private static int checkRspCode(TransData transData, TransProcessListener listener) {
         if (!transData.getResponseCode().equals("00")) {
             listener.onHideProgress();
@@ -103,7 +98,6 @@ public class TransOnline {
      */
     public static int settle(TransTotal total, TransProcessListener listener) {
         int ret;
-        Log.e(TAG, "settle ");
         if (SpManager.getControlSp().getInt(ControllerSp.BATCH_UP_STATUS) != ControllerSp.Constant.BATCH_UP) {
             // 处理脱机交易
             ret = Transmit.getInstance().sendOfflineTrans(listener, true, true);

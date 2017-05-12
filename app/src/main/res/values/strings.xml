@@ -51,8 +51,8 @@
     <string name="trans_instalment">Instalment</string>
     <string name="trans_moto_sale">Moto Sale</string>
     <string name="trans_moto_refund">Moto Refund</string>
-    <string name="trans_moto_preAuth">Moto PreAuth</string>
     <string name="trans_moto_void">Moto Void</string>
+    <string name="trans_moto_preAuth">Moto PreAuth</string>
     <string name="trans_moto_preauth_comp">Moto PreAuth Comp</string>
     <string name="trans_moto_preauth_cancel">Moto PreAuth Cancel</string>
     <string name="trans_moto_preauth_comp_cancel">Moto PreAuth Comp Cancel</string>

@@ -15,6 +15,7 @@ import com.pax.pay.trans.action.ActionInputTransData;
 import com.pax.pay.trans.action.ActionEnterPin;
 import com.pax.pay.trans.action.ActionSearchCard;
 import com.pax.pay.trans.action.activity.PrintPreviewActivity;
+import com.pax.pay.trans.component.Component;
 import com.pax.pay.trans.model.ETransType;
 
 /**
@@ -30,6 +31,24 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
     }
 
     @Override
+    protected void onOnlineResult(ActionResult result) {
+
+        if (Component.isSignatureFree(transData)) {// 免签
+            transData.setSignFree(true);
+            // 打印
+            gotoState(State.PRINT_PREVIEW.toString());
+        } else {
+            // 电子签名
+            transData.setSignFree(false);
+            gotoState(State.SIGNATURE.toString());
+        }
+        DbManager.getTransDao().updateTransData(transData);
+        deleteTransFromMotoTabBatch(); //从mototabbatch里面删除被void的moto preAuth
+
+        gotoState(State.SIGNATURE.toString());
+    }
+
+    @Override
     protected void bindStateOnAction() {
 
         bindEnterAuthCode();
@@ -40,6 +59,7 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
         bindEnterPin();
         bindOnline();
         bindSignature();
+        bindOfflienSend();
         bindPrintPreview();
         bindPrintReceipt();
 
@@ -78,8 +98,9 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
                 break;
             case SIGNATURE://输入金额之后的处理
                 onSignatureResult(result);
-                gotoState(State.PRINT_PREVIEW.toString());
                 break;
+            case OFFLINE_SEND:
+                gotoState(State.PRINT_PREVIEW.toString());
             case PRINT_PREVIEW://寻卡之后的处理
                 onPrintPreviewResult(result);
                 break;
@@ -91,6 +112,5 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
                 break;
         }
     }
-
 }
 

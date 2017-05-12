@@ -37,6 +37,7 @@ import java.util.Map;
 //For enable the StatusBar & HomeRecent key
 public class CrashHandler implements UncaughtExceptionHandler {
 
+    public static final String TAG = "CrashHandler";
 
     private final UncaughtExceptionHandler mHandler;
     //CrashHandler Singleton

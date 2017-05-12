@@ -16,7 +16,6 @@ package com.pax.pay;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -29,8 +28,6 @@ import java.lang.ref.WeakReference;
 
 import butterknife.ButterKnife;
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
-
-    public static final String TAG = BaseActivity.class.getSimpleName();
 
 
     @Override
@@ -75,7 +72,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Override
     public final void onClick(View v) {
         if (QuickClickUtils.isFastDoubleClick(v, 800)) {
-            Log.e(TAG, "onClick" );
             return;
         }
         onClickProtected(v);

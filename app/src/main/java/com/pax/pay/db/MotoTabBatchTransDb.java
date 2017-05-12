@@ -221,7 +221,6 @@ public class MotoTabBatchTransDb {
         return null;
     }
 
-
     /**
      * delete TransData by trace no
      */

@@ -1,7 +1,10 @@
 package com.pax.pay.trans.pack.PackFinancial;
 
+import android.text.TextUtils;
+
 import com.pax.abl.core.ipacker.PackListener;
 import com.pax.gl.packer.Iso8583Exception;
+import com.pax.pay.trans.TransResult;
 import com.pax.pay.trans.model.TransData;
 import com.pax.pay.trans.pack.PackFinancial.BasePackFinancial;
 
@@ -40,5 +43,33 @@ public class PackPreAuthCompCancel extends BasePackFinancial {
             e.printStackTrace();
         }
         return pack(true);
+    }
+
+
+    /**
+     * field 12, 13，set original transaction time
+     *
+     * @param transData
+     * @return
+     */
+    @Override
+    protected int setField_12(TransData transData) throws Iso8583Exception {
+        String temp = "";
+        temp = transData.getOrigDateTime();
+        if (!TextUtils.isEmpty(temp)) {
+            entity.setFieldValue("12", temp.substring(8, 14));
+        }
+        return TransResult.SUCC;
+    }
+
+    @Override
+    protected int setField_13(TransData transData) throws Iso8583Exception {
+        String temp = "";
+        temp = transData.getOrigDateTime();
+        if (!TextUtils.isEmpty(temp)) {
+            entity.setFieldValue("13", temp.substring(4, 8));
+
+        }
+        return TransResult.SUCC;
     }
 }

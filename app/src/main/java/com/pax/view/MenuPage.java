@@ -142,7 +142,7 @@ public class MenuPage extends LinearLayout {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 连续多次点击未处理
-                if (QuickClickUtils.isFastDoubleClick(view)) {
+                if (QuickClickUtils.isFastDoubleClick()) {
                     return;
                 }
 

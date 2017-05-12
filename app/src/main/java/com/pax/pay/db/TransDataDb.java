@@ -138,6 +138,26 @@ public class TransDataDb {
         return null;
     }
 
+    /**
+     * 在MmotoTabBatch中使用auth code查找preAuth的交易
+     *
+     * @param authCode 授权码
+     * @return
+     */
+    public TransData findTransDataByAuthCode(String authCode) {
+        try {
+            RuntimeExceptionDao<TransData, Integer> dao = getTransDao();
+            QueryBuilder<TransData, Integer> queryBuilder = dao.queryBuilder();
+            queryBuilder.where().eq(TransData.AUTHCODE_FIELD_NAME, authCode);
+            return queryBuilder.queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
     public List<TransData> findTransData(List<ETransType> types, List<TransData.ETransStatus> statuses) {
         try {
             RuntimeExceptionDao<TransData, Integer> dao = getTransDao();

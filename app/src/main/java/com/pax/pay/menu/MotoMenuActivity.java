@@ -2,6 +2,7 @@ package com.pax.pay.menu;
 
 import com.pax.edc.R;
 import com.pax.pay.trans.authtrans.MotoPreAuthCancelTrans;
+import com.pax.pay.trans.authtrans.MotoPreAuthCompCancelTrans;
 import com.pax.view.MenuPage;
 import com.pax.pay.trans.authtrans.MotoPreAuthTrans;
 import com.pax.pay.trans.authtrans.MotoPreAuthCompTrans;
@@ -22,7 +23,9 @@ public class MotoMenuActivity extends BaseMenuActivity {
                 .addTransItem(R.string.trans_moto_preauth_comp, R.drawable.app_auth,
                         new MotoPreAuthCompTrans(true))
                 .addTransItem(R.string.trans_moto_preauth_cancel, R.drawable.app_void,
-                        new MotoPreAuthCancelTrans(true));
+                        new MotoPreAuthCancelTrans(true))
+                .addTransItem(R.string.trans_moto_preauth_comp_cancel, R.drawable.app_refund,
+                        new MotoPreAuthCompCancelTrans(true));
 
         return builder.create();
     }

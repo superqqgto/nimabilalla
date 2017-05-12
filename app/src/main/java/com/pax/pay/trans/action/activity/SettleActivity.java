@@ -19,7 +19,6 @@ import android.content.DialogInterface.OnDismissListener;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.ConditionVariable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +54,6 @@ import java.util.ArrayList;
 
 public class SettleActivity extends BaseActivityWithTickForAction {
 
-    private static final String TAG = SettleActivity.class.getSimpleName();
     private TextView headerText;
     private ImageView backBtn;
     private Button settleBtn;
@@ -175,11 +173,9 @@ public class SettleActivity extends BaseActivityWithTickForAction {
                 finish(new ActionResult(TransResult.ERR_USER_CANCEL, null));
                 break;
             case R.id.settle_confirm:
-                Log.e(TAG, "onClickProtected: R.id.settle_confirm " );
                 // 进入结算流程时间太长， 停止定时器
                 tickTimer.stop();
-                if (QuickClickUtils.isFastDoubleClick(v)) {
-                    Log.e(TAG, "onClickProtected isFastDoubleClick " );
+                if (QuickClickUtils.isFastDoubleClick()) {
                     return;
                 }
 
@@ -187,7 +183,6 @@ public class SettleActivity extends BaseActivityWithTickForAction {
 
                     @Override
                     public void run() {
-                        Log.e(TAG, "run thread " );
                         int ret;
                         for (int i = 0; i < selectAcqs.size(); i++) {
                             TransProcessListenerImpl transProcessListenerImpl = new TransProcessListenerImpl(

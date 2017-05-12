@@ -14,8 +14,6 @@
  */
 package com.pax.pay.trans;
 
-import android.util.Log;
-
 import com.pax.abl.core.AAction;
 import com.pax.abl.core.AAction.ActionStartListener;
 import com.pax.abl.core.ActionResult;
@@ -33,7 +31,6 @@ import java.util.ArrayList;
 
 public class SettleTrans extends BaseTrans {
 
-    private static final String TAG = SettleTrans.class.getSimpleName() ;
     private ArrayList<String> selectAcqs;
 
     public SettleTrans(TransEndListener listener) {
@@ -68,7 +65,6 @@ public class SettleTrans extends BaseTrans {
             @Override
             public void onStart(AAction action) {
                 ((ActionSettle) action).setParam(ContextUtils.getString(R.string.trans_settle), selectAcqs);
-//                ((ActionSettle) action).setParam("linzhao", selectAcqs);
             }
 
         });
@@ -118,11 +114,9 @@ public class SettleTrans extends BaseTrans {
             case SELECT_ACQ:
                 //noinspection unchecked
                 selectAcqs = (ArrayList<String>) result.getData();
-                Log.e(TAG, "onActionResult:  SELECT_ACQ " );
                 gotoState(State.SETTLE.toString());
                 break;
             case SETTLE:
-                Log.e(TAG, "onActionResult: SETTLE" );
                 if (result.getRet() == TransResult.ERR_USER_CANCEL) {
                     gotoState(State.SELECT_ACQ.toString());
                 } else {

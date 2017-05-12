@@ -13,6 +13,7 @@ import com.pax.pay.trans.BaseTrans;
 import com.pax.pay.trans.TransResult;
 import com.pax.pay.trans.action.ActionEnterPin;
 import com.pax.pay.trans.action.ActionInputTransData;
+import com.pax.pay.trans.action.ActionOfflineSend;
 import com.pax.pay.trans.action.ActionPrintPreview;
 import com.pax.pay.trans.action.ActionPrintTransReceipt;
 import com.pax.pay.trans.action.ActionSearchCard;
@@ -20,9 +21,13 @@ import com.pax.pay.trans.action.ActionSignature;
 import com.pax.pay.trans.action.ActionTransOnline;
 import com.pax.pay.trans.action.activity.PrintPreviewActivity;
 import com.pax.pay.trans.component.Component;
+import com.pax.pay.trans.model.BaseTransData;
 import com.pax.pay.trans.model.ETransType;
 import com.pax.pay.trans.model.MotoTabBatchTransData;
 import com.pax.pay.trans.model.TransData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zhouhong on 2017/5/5.
@@ -31,7 +36,7 @@ import com.pax.pay.trans.model.TransData;
 public class MotoPreAuthTrans extends BaseTrans {
 
     private String amount;
-    private long motoFloorLimit = Long.parseLong(SpManager.getSysParamSp().get(SysParamSp.MOTO_FLOOR_LIMIT));
+//    private long motoFloorLimit = Long.parseLong(SpManager.getSysParamSp().get(SysParamSp.MOTO_FLOOR_LIMIT));
     private boolean isNeedInputAmount = true; // is need input amount
     private boolean isFreePin = true;
     boolean isSupportBypass = true;
@@ -58,6 +63,7 @@ public class MotoPreAuthTrans extends BaseTrans {
         bindEnterCVV2();
         bindOnline();
         bindSignature();
+        bindOfflienSend();
         bindPrintPreview();
         bindPrintReceipt();
 
@@ -153,6 +159,18 @@ public class MotoPreAuthTrans extends BaseTrans {
         bind(State.ONLINE.toString(), onlineBuilder.create());
     }
 
+    private void bindOfflienSend() {
+        ActionOfflineSend.Builder offlineSendBuilder = new ActionOfflineSend.Builder()
+                .startListener(new AAction.ActionStartListener() {
+                    @Override
+                    public void onStart(AAction action) {
+                        ((ActionOfflineSend) action).setTransData(transData);
+                    }
+                });
+
+        bind(State.OFFLINE_SEND.toString(), offlineSendBuilder.create());
+    }
+
     private void bindSignature() {
         // signature action
         ActionSignature.Builder signBuilder = new ActionSignature.Builder()
@@ -202,6 +220,7 @@ public class MotoPreAuthTrans extends BaseTrans {
         ENTER_CVV2,
         ONLINE,
         SIGNATURE,
+        OFFLINE_SEND, //上传offline交易，piggyback
         PRINT_PREVIEW,
         PRINT_RECEIPT
     }
@@ -285,13 +304,27 @@ public class MotoPreAuthTrans extends BaseTrans {
                 if (signData != null && signData.length > 0) {
                     transData.setSignData(signData);
                     // update transaction record，save signature
-//                    DbManager.getMotoTabBatchTransDao().updateTransData(new MotoTabBatchTransData(transData));
                     DbManager.getTransDao().updateTransData(transData);
+                    updateTransToTabBatch();
+                }
+
+                //get offline trans data list， piggyback
+                List<TransData.OfflineStatus> filter = new ArrayList<>();
+                filter.add(TransData.OfflineStatus.OFFLINE_NOT_SENT);
+                List<TransData> offlineTransList = DbManager.getTransDao().findOfflineTransData(filter);
+                if (offlineTransList != null) {
+                    if (offlineTransList.size() != 0 && offlineTransList.get(0).getId() != transData.getId()) { //AET-92
+                        //offline send
+                        gotoState(State.OFFLINE_SEND.toString());
+                        break;
+                    }
                 }
                 // if terminal not support electronic signature or user do not make signature or signature time out, print preview
                 gotoState(State.PRINT_PREVIEW.toString());
 
                 break;
+            case OFFLINE_SEND:
+                gotoState(State.PRINT_PREVIEW.toString());
             case PRINT_PREVIEW:
                 String string = (String) result.getData();
                 if (string != null && string.equals(PrintPreviewActivity.PRINT_BUTTON)) {
@@ -317,6 +350,11 @@ public class MotoPreAuthTrans extends BaseTrans {
         DbManager.getMotoTabBatchTransDao().insertTransData(motoTabBatchTransData);
     }
 
+    private void updateTransToTabBatch() {
+        MotoTabBatchTransData motoTabBatchTransData = new MotoTabBatchTransData(transData);
+        DbManager.getMotoTabBatchTransDao().updateTransData(motoTabBatchTransData);
+    }
+
     // need electronic signature or send
     private void toSignOrPrint() {
         if (Component.isSignatureFree(transData)) {// signature free
@@ -327,6 +365,7 @@ public class MotoPreAuthTrans extends BaseTrans {
             transData.setSignFree(false);
             gotoState(MotoPreAuthTrans.State.SIGNATURE.toString());
         }
-        DbManager.getTransDao().updateTransData(transData);
+//        DbManager.getTransDao().updateTransData(transData);
+//        updateTransToTabBatch();
     }
 }

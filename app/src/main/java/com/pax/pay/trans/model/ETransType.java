@@ -26,7 +26,9 @@ import com.pax.pay.trans.pack.PackFinancial.PackAuth;
 import com.pax.pay.trans.pack.PackFinancial.PackDcc;
 import com.pax.pay.trans.pack.PackFinancial.PackInstalment;
 import com.pax.pay.trans.pack.PackFinancial.PackMotoPreAuth;
+import com.pax.pay.trans.pack.PackFinancial.PackMotoPreAuthCancel;
 import com.pax.pay.trans.pack.PackFinancial.PackMotoPreAuthComp;
+import com.pax.pay.trans.pack.PackFinancial.PackMotoPreAuthCompCancel;
 import com.pax.pay.trans.pack.PackFinancial.PackOfflineTransSend;
 import com.pax.pay.trans.pack.PackFinancial.PackPreAuthCancel;
 import com.pax.pay.trans.pack.PackFinancial.PackPreAuthComp;
@@ -499,10 +501,9 @@ public enum ETransType {
 
         @Override
         public PackIso8583 getPackager(PackListener listener) {
-            return new PackPreAuthCancel(listener);
+            return new PackMotoPreAuthCancel(listener);
         }
     },
-
 
     MOTO_PREAUTH_COMP_CANCEL() {
         @Override
@@ -523,7 +524,7 @@ public enum ETransType {
 
         @Override
         public PackIso8583 getPackager(PackListener listener) {
-            return new PackPreAuthCompCancel(listener);
+            return new PackMotoPreAuthCompCancel(listener);
         }
     },
 

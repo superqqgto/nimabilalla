@@ -17,7 +17,6 @@ package com.pax.pay.trans.action;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.pax.abl.core.AAction;
 import com.pax.abl.core.ActionResult;
@@ -42,7 +41,6 @@ public class ActionSettle extends AAction {
     private LinkedHashMap<String, Object> map;
     private TransTotal total;
     private ArrayList<String> list;
-    public static final String TAG = ActionSettle.class.getSimpleName();
 
     public void setParam(String title, LinkedHashMap<String, Object> map,
                          TransTotal total) {
@@ -58,7 +56,6 @@ public class ActionSettle extends AAction {
 
     @Override
     protected void process() {
-        Log.e(TAG, "process: " );
         FinancialApplication.mApp.runOnUiThread(new Runnable() {
 
             @Override

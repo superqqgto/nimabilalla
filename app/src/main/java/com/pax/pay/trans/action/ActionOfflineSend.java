@@ -19,6 +19,7 @@ import android.content.Context;
 import com.pax.abl.core.AAction;
 import com.pax.abl.core.ActionResult;
 import com.pax.pay.app.FinancialApplication;
+import com.pax.pay.trans.model.TransData;
 import com.pax.pay.trans.transmit.TransProcessListenerImpl;
 import com.pax.pay.trans.transmit.Transmit;
 import com.pax.pay.utils.ContextUtils;
@@ -27,8 +28,19 @@ public class ActionOfflineSend extends AAction {
 
     private TransProcessListenerImpl transProcessListenerImpl;
 
+    private TransData transData;
+
     public ActionOfflineSend(ActionStartListener listener) {
         super(listener);
+    }
+
+    private ActionOfflineSend(ActionStartListener listener, TransData transData) {
+        super(listener);
+        this.transData = transData;
+    }
+
+    public void setTransData(TransData transData) {
+        this.transData = transData;
     }
 
     @Override
@@ -43,5 +55,25 @@ public class ActionOfflineSend extends AAction {
                 setResult(new ActionResult(ret, null));
             }
         });
+    }
+
+    public static class Builder {
+
+        ActionStartListener startListener;
+        private TransData transData;
+
+        public Builder startListener(ActionStartListener startListener) {
+            this.startListener = startListener;
+            return this;
+        }
+
+        public Builder transData(TransData transData) {
+            this.transData = transData;
+            return this;
+        }
+
+        public ActionOfflineSend create() {
+            return new ActionOfflineSend(startListener, transData);
+        }
     }
 }
