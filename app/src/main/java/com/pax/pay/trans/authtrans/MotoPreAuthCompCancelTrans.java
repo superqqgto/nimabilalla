@@ -76,6 +76,11 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
     protected void onEnterAuthCodeResult(ActionResult result) {
         //get auth code
         String authCode = (String) result.getData();
+        //linzhao
+        if (authCode == null) {
+            transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
+            return;
+        }
         transData.setOrigAuthCode(authCode);
 
         //用auth code到Tab Batch中查询之前PreAuth的Transaction
@@ -98,6 +103,7 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         transData.setOrigAuthCode(authCode);
 
         copyOrigTransData();
+        gotoState(State.TRANS_DETAIL.toString());
     }
 
     @Override
@@ -161,7 +167,8 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                gotoState(State.TRANS_DETAIL.toString());
+                //linzhao
+//                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_CVV2.toString());

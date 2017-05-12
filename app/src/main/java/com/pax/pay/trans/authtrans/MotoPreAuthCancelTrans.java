@@ -57,7 +57,7 @@ public class MotoPreAuthCancelTrans extends BaseMotoPreAuthTrans {
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                gotoState(State.TRANS_DETAIL.toString());
+//                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_CVV2.toString());

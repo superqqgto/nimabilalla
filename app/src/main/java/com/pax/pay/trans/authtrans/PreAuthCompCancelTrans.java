@@ -31,7 +31,7 @@ public class PreAuthCompCancelTrans extends BaseAuthTrans {
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                gotoState(State.ONLINE.toString());
+//                gotoState(State.ONLINE.toString());
                 break;
             case ONLINE:
                 onOnlineResult(result);

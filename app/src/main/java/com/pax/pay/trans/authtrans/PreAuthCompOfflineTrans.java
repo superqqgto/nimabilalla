@@ -37,7 +37,8 @@ public class PreAuthCompOfflineTrans extends BaseAuthTrans {
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                gotoState(State.TRANS_DETAIL.toString());
+                //linzhao
+//                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_AMOUNT.toString());

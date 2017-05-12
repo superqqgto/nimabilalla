@@ -252,6 +252,12 @@ public abstract class BaseAuthTrans extends BaseTrans {
         //get auth code
         String authCode = (String) result.getData();
         transData.setOrigAuthCode(authCode);
+        if (authCode == null) {
+            transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
+            return;
+
+        }
+
 
         //用auth code到Tab Batch中查询之前PreAuth的Transaction
         origTransData = DbManager.getTabBatchTransDao().findTransDataByAuthCode(authCode);
@@ -272,6 +278,9 @@ public abstract class BaseAuthTrans extends BaseTrans {
         transData.setOrigAuthCode(authCode);
 
         copyOrigTransData();
+
+        gotoState(State.TRANS_DETAIL.toString());
+
     }
 
     protected void onEnterAmountResult(ActionResult result) {

@@ -116,7 +116,13 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
     protected void onEnterAuthCodeResult(ActionResult result) {
         //get auth code
         String authCode = (String) result.getData();
+        //linzhao
+        if (authCode == null) {
+            transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
+            return;
+        }
         transData.setOrigAuthCode(authCode);
+
 
         //用auth code到Tab Batch中查询之前PreAuth的Transaction
         origTransData = DbManager.getMotoTabBatchTransDao().findTransDataByAuthCode(authCode);
@@ -138,6 +144,9 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
         transData.setOrigAuthCode(authCode);
 
         copyOrigTransData();
+        //linzhao
+        gotoState(State.TRANS_DETAIL.toString());
+
     }
 
     protected void onCheckCardResult(ActionResult result) {
