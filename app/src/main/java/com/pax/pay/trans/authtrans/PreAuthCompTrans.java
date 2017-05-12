@@ -14,7 +14,7 @@ public class PreAuthCompTrans extends BaseAuthTrans {
 
     public PreAuthCompTrans() {
         super(ETransType.PREAUTH_COMP, null);
-        transNameResId = R.string.trans_moto_preauth_comp;
+        transNameResId = R.string.trans_preauth_comp;
     }
 
     @Override

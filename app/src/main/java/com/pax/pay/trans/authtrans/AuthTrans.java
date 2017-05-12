@@ -327,7 +327,7 @@ public class AuthTrans extends BaseTrans {
                     transData.setEmvResult((byte) ETransResult.ONLINE_APPROVED.ordinal());
                 }
                 //此处需要存取online响应报文中的authcode、responseCode字段
-                saveTransToTabBatch();
+//                saveTransToTabBatch();
 
                 // judge whether need signature or print
                 toSignOrPrint();
@@ -453,6 +453,7 @@ public class AuthTrans extends BaseTrans {
             gotoState(State.SIGNATURE.toString());
         }
         DbManager.getTransDao().updateTransData(transData);
+        saveTransToTabBatch();
     }
 
     private void goPrintBranch(ActionResult result) {
