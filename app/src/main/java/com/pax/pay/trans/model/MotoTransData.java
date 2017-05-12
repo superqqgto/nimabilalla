@@ -85,7 +85,7 @@ public class MotoTransData extends BaseTransData implements Serializable,Cloneab
     protected ETransStatus transState = ETransStatus.NORMAL; // 交易状态
     @DatabaseField(canBeNull = false)
     protected boolean isUpload = false; // 是否已批上送
-    @DatabaseField
+    @DatabaseField(columnName = OFFLINE_STATE_FIELD_NAME)
     protected OfflineStatus offlineSendState = OfflineStatus.OFFLINE_NOT_SENT; // 脱机上送失败类型 ：上送失败/平台拒绝
     @DatabaseField(canBeNull = false)
     protected int sendTimes; // 已批上送次数
