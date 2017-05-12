@@ -175,7 +175,7 @@ public class SettleActivity extends BaseActivityWithTickForAction {
             case R.id.settle_confirm:
                 // 进入结算流程时间太长， 停止定时器
                 tickTimer.stop();
-                if (QuickClickUtils.isFastDoubleClick()) {
+                if (QuickClickUtils.isFastDoubleClick(v)) {
                     return;
                 }
 

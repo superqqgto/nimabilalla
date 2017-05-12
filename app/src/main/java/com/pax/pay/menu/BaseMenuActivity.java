@@ -89,11 +89,16 @@ public abstract class BaseMenuActivity extends BaseActivity {
     public void onClickProtected(View v) {
     }
 
-    @OnClick(R.id.header_back)
-    public void onViewClicked() {
-        if (QuickClickUtils.isFastDoubleClick(null)) {
+    @OnClick({R.id.header_back})
+    public void onViewClicked(View view) {
+        if (QuickClickUtils.isFastDoubleClick(view)) {
             return;
         }
-        finish();
+
+        switch (view.getId()) {
+            case R.id.header_back:
+                finish();
+                break;
+        }
     }
 }

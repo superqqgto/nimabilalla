@@ -72,6 +72,7 @@ public class DispTransDetailActivity extends BaseActivityWithTickForAction {
     protected void initViews() {
 
         tvTitle.setText(navTitle);
+        ivBack.setVisibility(navBack ? View.VISIBLE : View.GONE);
 
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         params.bottomMargin = 15;
@@ -85,19 +86,12 @@ public class DispTransDetailActivity extends BaseActivityWithTickForAction {
 
     @Override
     protected void setListeners() {
-        if (!navBack) {
-            ivBack.setVisibility(View.GONE);
-        } else {
-            ivBack.setOnClickListener(this);
-        }
-
-        btnConfirm.setOnClickListener(this);
     }
 
     @OnClick({R.id.header_back, R.id.confirm_btn})
     public void onViewClicked(View view) {
 
-        if (QuickClickUtils.isFastDoubleClick()) {
+        if (QuickClickUtils.isFastDoubleClick(view)) {
             return;
         }
 
@@ -111,10 +105,6 @@ public class DispTransDetailActivity extends BaseActivityWithTickForAction {
             default:
                 break;
         }
-    }
-
-    @Override
-    public void onClickProtected(View v) {
     }
 
     @Override

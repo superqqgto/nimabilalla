@@ -144,7 +144,7 @@ public class SignatureActivity extends BaseActivityWithTickForAction {
     @OnClick({R.id.clear_btn, R.id.confirm_btn})
     public void onViewClicked(View view) {
 
-        if(QuickClickUtils.isFastDoubleClick()){
+        if (QuickClickUtils.isFastDoubleClick(view)) {
             return;
         }
 
@@ -207,10 +207,6 @@ public class SignatureActivity extends BaseActivityWithTickForAction {
             default:
                 break;
         }
-    }
-
-    @Override
-    public void onClickProtected(View v) {
     }
 
     protected void setProcessFlag() {

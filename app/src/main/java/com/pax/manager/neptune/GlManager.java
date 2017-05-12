@@ -50,6 +50,10 @@ public class GlManager {
         return getGl().getVersion();
     }
 
+    /**
+     * algorithm
+     * @return
+     */
     public static IAlgo getAlgo() {
         return getGl().getAlgo();
     }

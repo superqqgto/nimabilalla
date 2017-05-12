@@ -52,7 +52,7 @@ abstract public class BaseFragmentV4 extends Fragment implements View.OnClickLis
     // AET-93
     @Override
     public final void onClick(View v) {
-        if (QuickClickUtils.isFastDoubleClick()) {
+        if (QuickClickUtils.isFastDoubleClick(v)) {
             return;
         }
         onClickProtected(v);

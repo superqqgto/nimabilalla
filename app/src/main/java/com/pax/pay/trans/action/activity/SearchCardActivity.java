@@ -345,10 +345,6 @@ public class SearchCardActivity extends BaseActivityWithTickForAction {
         }
     }
 
-    @Override
-    public void onClickProtected(View v) {
-    }
-
     public final static int REQ_ADJUST_TIP = 0;
 
     @Override

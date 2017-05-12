@@ -141,13 +141,14 @@ public class Utils {
     public static void wakeupScreen(int timeout){
         PowerManager pm=(PowerManager) FinancialApplication.mApp.getSystemService(Context.POWER_SERVICE);
         final PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "bright");
-        wl.acquire();
-        FinancialApplication.mApp.runOnUiThreadDelay(new Runnable() {
-            @Override
-            public void run() {
-                wl.release();
-            }
-        }, timeout * 1000);
+//        wl.acquire();
+//        FinancialApplication.mApp.runOnUiThreadDelay(new Runnable() {
+//            @Override
+//            public void run() {
+//                wl.release();
+//            }
+//        }, timeout * 1000);
+        wl.acquire(timeout);
     }
 
     public static void hideSystemKeyboard(Context context, View view){

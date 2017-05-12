@@ -87,14 +87,10 @@ public class DispSingleLineMsgActivity extends BaseActivityWithTickForAction {
     protected void setListeners() {
     }
 
-    @Override
-    public void onClickProtected(View v) {
-    }
-
     @OnClick({R.id.header_back, R.id.confirm_btn})
     public void onViewClicked(View view) {
 
-        if (QuickClickUtils.isFastDoubleClick()) {
+        if (QuickClickUtils.isFastDoubleClick(view)) {
             return;
         }
 

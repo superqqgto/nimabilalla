@@ -83,7 +83,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (QuickClickUtils.isFastDoubleClick(null, 800)) { //AET-123
+        if (QuickClickUtils.isFastDoubleClick(800)) { //AET-123
             return true;
         }
         if (keyCode == KeyEvent.KEYCODE_BACK) {
