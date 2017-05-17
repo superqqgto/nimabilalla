@@ -228,27 +228,6 @@ public class MotoPreAuthTrans extends BaseTrans {
     @Override
     public void onActionResult(String currentState, ActionResult result) {
         State state = State.valueOf(currentState);
-        if (state == State.EMV_PROC) {
-            // 不管emv处理结果成功还是失败，都更新一下冲正
-            //如果是moto类型的交易,冲正怎么进行?????????????????????????
-            byte[] f55Dup = EmvTags.getF55(transType, true);
-//            if (f55Dup != null && f55Dup.length > 0) {
-//                MotoTabBatchTransData dupMotoBatchTransData = DbManager.getMotoTabBatchTransDao().findFirstDupRecord();
-//                if (dupMotoBatchTransData != null) {
-//                    dupMotoBatchTransData.setDupIccData(GlManager.bcdToStr(f55Dup));
-//                    DbManager.getMotoTabBatchTransDao().updateTransData(dupMotoBatchTransData);
-//                }
-//            }
-
-            if (f55Dup != null && f55Dup.length > 0) {
-                TransData dupTransData = DbManager.getTransDao().findFirstDupRecord();
-                if (dupTransData != null) {
-                    dupTransData.setDupIccData(GlManager.bcdToStr(f55Dup));
-                    DbManager.getTransDao().updateTransData(dupTransData);
-                }
-            }
-        }
-
         if ((state != State.SIGNATURE) && (state != State.PRINT_PREVIEW)) {
             // check action result，if failed，end the trans.
             int ret = result.getRet();
@@ -365,7 +344,7 @@ public class MotoPreAuthTrans extends BaseTrans {
             transData.setSignFree(false);
             gotoState(MotoPreAuthTrans.State.SIGNATURE.toString());
         }
-//        DbManager.getTransDao().updateTransData(transData);
-//        updateTransToTabBatch();
+        DbManager.getTransDao().updateTransData(transData);
+        updateTransToTabBatch();
     }
 }

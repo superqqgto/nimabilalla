@@ -142,7 +142,7 @@ public class RefundTrans extends BaseTrans {
                 String transName = ContextUtils.getString(R.string.trans_refund);
 //                String amount = transData.getAmount();
                 int i = 0;
-                String MutiAmount;
+                String mutiAmount;
                 amountOrg = amountInput.substring(0, lengthAmount - 2) + "." + amountInput.substring(lengthAmount - 2, lengthAmount) + " HKD";
                 LinkedHashMap<String, String> map = new LinkedHashMap<>();
                 map.put(ContextUtils.getString(R.string.DCC_TotalAmount), amountOrg);
@@ -150,8 +150,9 @@ public class RefundTrans extends BaseTrans {
                 Iterator iter2 = transData.getDccTransData().getCurrencyList().iterator();
                 Iterator iter3 = transData.getDccTransData().getConvRateList().iterator();
                 while (iter1.hasNext()) {
-                    MutiAmount = iter1.next() + " " + iter2.next() + " " + "Rate:" + iter3.next();
-                    map.put(Integer.toString(i), MutiAmount);
+//                    mutiAmount = iter1.next() + " " + iter2.next() + " " + "Rate:" + iter3.next();
+                    mutiAmount = iter1.next() + " " + iter2.next();
+                    map.put(Integer.toString(i), mutiAmount);
                     i++;
                 }
                 ((ActionSelectDccAmount) action).setParam(transName, map);

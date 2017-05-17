@@ -1,6 +1,7 @@
 package com.pax.pay.trans.authtrans;
 
 import com.pax.abl.core.ActionResult;
+import com.pax.edc.R;
 import com.pax.manager.DbManager;
 import com.pax.pay.trans.component.Component;
 import com.pax.pay.trans.model.ETransType;
@@ -13,15 +14,16 @@ import com.pax.pay.trans.model.TransData;
 public class PreAuthCompOfflineTrans extends BaseAuthTrans {
 
     public PreAuthCompOfflineTrans() {
-        super(ETransType.PREAUTH_COMP_OFFLINE, null);
+        super(ETransType.PREAUTH_COMP_OFFLINE, R.string.trans_preauth_comp_offline, null);
     }
 
     @Override
     protected void bindStateOnAction() {
         bindEnterAuthCode();
         bindTransDetail();
-        bindEnterAmout();
+        bindEnterAmount();
         bindCheckCard();
+        bindEmvProcess();
         bindEnterPin();
         bindSignature();
         bindPrintPreview();
@@ -32,13 +34,15 @@ public class PreAuthCompOfflineTrans extends BaseAuthTrans {
 
     @Override
     public void onActionResult(String currentState, ActionResult result) {
-        super.onActionResult(currentState, result);
+        if (isEndForward(currentState, result)) {
+            return;
+        }
 
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
                 //linzhao
-//                gotoState(State.TRANS_DETAIL.toString());
+                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_AMOUNT.toString());
@@ -71,5 +75,21 @@ public class PreAuthCompOfflineTrans extends BaseAuthTrans {
                 transEnd(result);
                 break;
         }
+    }
+
+
+    // 判断是否需要电子签名或打印
+    protected void toSignOrPrint() {
+        if (Component.isSignatureFree(transData)) {// 免签
+            transData.setSignFree(true);
+            // 打印
+            gotoState(State.PRINT_RECEIPT.toString());
+        } else {
+            // 电子签名
+            transData.setSignFree(false);
+            gotoState(State.SIGNATURE.toString());
+        }
+        DbManager.getTransDao().updateTransData(transData);
+//        saveTransToTabBatch();
     }
 }

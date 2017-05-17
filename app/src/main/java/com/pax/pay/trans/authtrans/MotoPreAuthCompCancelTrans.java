@@ -29,7 +29,6 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         this.isFreePin = isFreePin;
     }
 
-    //    protected int transNameResId;
     protected TransData origTransData;
 
     //origTransData的数据类型的区别导致重写函数
@@ -78,12 +77,16 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         String authCode = (String) result.getData();
         //linzhao
         if (authCode == null) {
-            transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
-            return;
+            if (result.getRet() == TransResult.ERR_USER_CANCEL){
+                return;
+            }else {
+                transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
+                return;
+            }
         }
         transData.setOrigAuthCode(authCode);
 
-        //用auth code到Tab Batch中查询之前PreAuth的Transaction
+        //用auth code到terminal Batch中查询之前PreAuth comp的Transaction
         origTransData = DbManager.getTransDao().findTransDataByAuthCode(authCode);
         if (origTransData == null) {
             // trans not exist
@@ -94,7 +97,7 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         ETransType trType = origTransData.getTransType();
         // only preAuth trans can be revoked
 
-        if (!ETransType.MOTO_PREAUTH.equals(trType)) {
+        if (!ETransType.MOTO_PREAUTH_COMP.equals(trType)) {
             transEnd(new ActionResult(TransResult.ERR_PREAUTH_COMP_UNSUPPORTED, null));
             return;
         }
@@ -119,9 +122,7 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
             gotoState(State.SIGNATURE.toString());
         }
         DbManager.getTransDao().updateTransData(transData);
-        deleteTransFromBatch(); //从mototabbatch里面删除被void的moto preAuth
-
-        gotoState(State.SIGNATURE.toString());
+        deleteTransFromBatch(); //从terminal batch里面删除被void的moto preAuth comp
     }
 
 
@@ -140,7 +141,6 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
         transData.setAcquirer(origTransData.getAcquirer());
         transData.setIssuer(origTransData.getIssuer());
     }
-
 
     @Override
     protected void bindStateOnAction() {
@@ -162,13 +162,14 @@ public class MotoPreAuthCompCancelTrans extends BaseMotoPreAuthTrans {
 
     @Override
     public void onActionResult(String currentState, ActionResult result) {
-        super.onActionResult(currentState, result);
+        if(isEndForward(currentState, result)){
+            return;
+        }
 
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                //linzhao
-//                gotoState(State.TRANS_DETAIL.toString());
+                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_CVV2.toString());

@@ -40,7 +40,7 @@ import com.pax.pay.constant.AdConstants;
 import com.pax.pay.menu.AuthMenuActivity;
 import com.pax.pay.menu.MotoMenuActivity;
 import com.pax.pay.menu.ManageMenuActivity;
-import com.pax.pay.menu.OtherFunctionMenuActivity;
+import com.pax.pay.menu.OtherTransactionMenuActivity;
 import com.pax.pay.trans.AdjustTrans;
 import com.pax.pay.trans.OfflineSaleTrans;
 import com.pax.pay.trans.RefundTrans;
@@ -222,7 +222,7 @@ public class MainActivity extends BaseActivity {
                 // pre-authorization
                 .addMenuItem(R.string.trans_preAuth, R.drawable.app_auth, AuthMenuActivity.class)
                 // moto pre-authorization
-                .addMenuItem(R.string.trans_moto_preAuth, R.drawable.app_auth, MotoMenuActivity.class)
+                .addMenuItem(R.string.trans_moto_menu, R.drawable.app_auth, MotoMenuActivity.class)
                 //offline
                 .addTransItem(R.string.trans_offline, R.drawable.app_sale,
                         new OfflineSaleTrans(listener))
@@ -235,7 +235,7 @@ public class MainActivity extends BaseActivity {
                 // management
                 .addMenuItem(R.string.trans_manage, R.drawable.app_manage, ManageMenuActivity.class)
                 // other function
-                .addMenuItem(R.string.trans_other_function, R.drawable.app_other, OtherFunctionMenuActivity.class);
+                .addMenuItem(R.string.trans_other_transaction, R.drawable.app_other, OtherTransactionMenuActivity.class);
 
 
         return builder.create();

@@ -33,6 +33,7 @@ import com.pax.pay.trans.model.ETransType;
 import com.pax.pay.trans.model.TransData;
 import com.pax.pay.utils.ContextUtils;
 import com.pax.pay.utils.LogUtils;
+import com.pax.pay.utils.Utils;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -470,12 +471,14 @@ public abstract class PackIso8583 implements IPacker<TransData, byte[]> {
     protected int checkRecvData(HashMap<String, byte[]> map, TransData transData, boolean isCheckAmt) {
         String temp;
         byte[] data;
+        ETransType transType = transData.getTransType();
         // 交易金额
         if (isCheckAmt) {
             data = map.get("4");
             if (data != null && data.length > 0) {
                 temp = new String(data);
-                if (Long.parseLong(temp) != Long.parseLong(transData.getAmount())) {
+                transData.setBalanceAmount(temp);
+                if (transType!= ETransType.BALANCE && Long.parseLong(temp) != Long.parseLong(transData.getAmount())) {
                     return TransResult.ERR_TRANS_AMT;
                 }
             }

@@ -46,18 +46,18 @@ public class MotoPreAuthCancelTrans extends BaseMotoPreAuthTrans {
         }
         DbManager.getTransDao().updateTransData(transData);
         deleteTransFromMotoTabBatch(); //从mototabbatch里面删除被void的moto preAuth
-
-        gotoState(State.SIGNATURE.toString());
     }
 
     @Override
     public void onActionResult(String currentState, ActionResult result) {
-        super.onActionResult(currentState, result);
+        if(isEndForward(currentState, result)){
+            return;
+        }
 
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-//                gotoState(State.TRANS_DETAIL.toString());
+                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_CVV2.toString());

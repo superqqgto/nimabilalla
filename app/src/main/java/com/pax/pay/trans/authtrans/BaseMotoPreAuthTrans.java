@@ -37,7 +37,7 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
     protected MotoTabBatchTransData origTransData;
 
     public BaseMotoPreAuthTrans(ETransType transType, TransEndListener transListener) {
-        super(transType, transListener);
+        super(transType, R.string.trans_base_moto_preAuth, transListener);
     }
 
     //origTransData的数据类型的区别导致重写函数
@@ -82,6 +82,7 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
     //origTransData的数据类型的区别导致重写函数
     @Override
     protected void onEnterAmountResult(ActionResult result) {
+
         //set total amount
         transData.setAmount(result.getData().toString());
         //set tip amount
@@ -118,8 +119,12 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
         String authCode = (String) result.getData();
         //linzhao
         if (authCode == null) {
-            transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
-            return;
+            if (result.getRet() == TransResult.ERR_USER_CANCEL) {
+                return;
+            } else {
+                transEnd(new ActionResult(TransResult.ERR_NO_TRANS, null));
+                return;
+            }
         }
         transData.setOrigAuthCode(authCode);
 
@@ -144,9 +149,6 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
         transData.setOrigAuthCode(authCode);
 
         copyOrigTransData();
-        //linzhao
-        gotoState(State.TRANS_DETAIL.toString());
-
     }
 
     protected void onCheckCardResult(ActionResult result) {
@@ -169,8 +171,8 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
             transData.setSignFree(false);
             gotoState(State.SIGNATURE.toString());
         }
-        DbManager.getTransDao().updateTransData(transData);
         gotoState(State.SIGNATURE.toString());
+        DbManager.getTransDao().updateTransData(transData);
     }
 
     protected void onSignatureResult(ActionResult result) {
@@ -191,9 +193,10 @@ public abstract class BaseMotoPreAuthTrans extends BaseAuthTrans {
             if (offlineTransList.size() != 0 && offlineTransList.get(0).getId() != transData.getId()) { //AET-92
                 //offline send
                 gotoState(State.OFFLINE_SEND.toString());
+            } else {
+                gotoState(State.PRINT_PREVIEW.toString());
             }
-        }
-        else {
+        } else {
             gotoState(State.PRINT_PREVIEW.toString());
         }
     }

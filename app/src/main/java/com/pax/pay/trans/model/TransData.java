@@ -101,6 +101,8 @@ public class TransData extends BaseTransData implements Serializable, Cloneable 
     protected String dupReason; // 冲正原因
     @DatabaseField
     protected String reserved; // 保留域[field63]
+    @DatabaseField
+    protected String balanceAmount; // 小费金额
 
     // =================EMV数据=============================
     @DatabaseField(canBeNull = false)
@@ -271,6 +273,13 @@ public class TransData extends BaseTransData implements Serializable, Cloneable 
         this.procCode = procCode;
     }
 
+    public String getBalanceAmount() {
+        return balanceAmount;
+    }
+
+    public void setBalanceAmount(String balanceAmount) {
+        this.balanceAmount = balanceAmount;
+    }
     public String getAmount() {
         return amount;
     }

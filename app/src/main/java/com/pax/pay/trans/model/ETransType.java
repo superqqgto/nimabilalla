@@ -23,6 +23,7 @@ import com.pax.pay.trans.pack.PackBatchUp;
 import com.pax.pay.trans.pack.PackBatchUpNotice;
 import com.pax.pay.trans.pack.PackFinancial.PackAdjust;
 import com.pax.pay.trans.pack.PackFinancial.PackAuth;
+import com.pax.pay.trans.pack.PackFinancial.PackBalance;
 import com.pax.pay.trans.pack.PackFinancial.PackDcc;
 import com.pax.pay.trans.pack.PackFinancial.PackInstalment;
 import com.pax.pay.trans.pack.PackFinancial.PackMotoPreAuth;
@@ -318,7 +319,7 @@ public enum ETransType {
                     .setProcCode("300000")
                     .setServiceCode("06")
                     .setTransNameResId(R.string.trans_preAuth)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode((byte)(SearchMode.SWIPE | SearchMode.KEYIN | SearchMode.INSERT))
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -345,7 +346,7 @@ public enum ETransType {
                     .setProcCode("000000")
                     .setServiceCode("99")
                     .setTransNameResId(R.string.trans_preauth_comp)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode((byte)(SearchMode.SWIPE | SearchMode.KEYIN | SearchMode.INSERT))
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -369,7 +370,7 @@ public enum ETransType {
                     .setProcCode("200000")
                     .setServiceCode("99")
                     .setTransNameResId(R.string.trans_preauth_cancel)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode((byte)(SearchMode.SWIPE | SearchMode.KEYIN | SearchMode.INSERT))
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -392,7 +393,7 @@ public enum ETransType {
                     .setDupMsgType("0400")
                     .setProcCode("020000")
                     .setTransNameResId(R.string.trans_preauth_comp_cancel)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode((byte)(SearchMode.SWIPE | SearchMode.KEYIN | SearchMode.INSERT))
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -415,7 +416,7 @@ public enum ETransType {
                     .setDupMsgType("0400")
                     .setProcCode("000000")
                     .setTransNameResId(R.string.trans_preauth_comp_offline)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode((byte)(SearchMode.SWIPE | SearchMode.KEYIN | SearchMode.INSERT))
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -490,7 +491,7 @@ public enum ETransType {
                     .setProcCode("200000")
                     .setServiceCode("99")
                     .setTransNameResId(R.string.trans_preauth_cancel)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode(SearchMode.KEYIN)
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -513,7 +514,7 @@ public enum ETransType {
                     .setDupMsgType("0400")
                     .setProcCode("020000")
                     .setTransNameResId(R.string.trans_preauth_comp_cancel)
-                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setReadMode(SearchMode.KEYIN)
                     .setIsDupSendAllowed(true)
                     .setIsScriptSendAllowed(true)
                     .setIsOfflineSendAllowed(true)
@@ -638,9 +639,34 @@ public enum ETransType {
 
         @Override
         public PackIso8583 getPackager(PackListener listener) {
-            return new PackDcc(listener);
+            return new PackSale(listener);
         }
     },
+
+    QUASI_CASH(){
+        @Override
+        Builder initParam() {
+            return new Builder()
+                    .setMsgType("0200")
+                    .setDupMsgType("0400")
+                    .setProcCode("010000")
+                    .setServiceCode("00")
+                    .setTransNameResId(R.string.trans_quasi_cash)
+                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setIsDupSendAllowed(true)
+                    .setIsScriptSendAllowed(true)
+                    .setIsOfflineSendAllowed(true)
+                    .setIsVoidAllowed(true)
+                    .setIsPackReversal(true)
+                    ;
+        }
+
+        @Override
+        public PackIso8583 getPackager(PackListener listener) {
+            return new PackSale(listener);
+        }
+    },
+
 
 
     INSTALMENT() {
@@ -667,6 +693,29 @@ public enum ETransType {
         }
     },
 
+    BALANCE() {
+        @Override
+        Builder initParam() {
+            return new Builder()
+                    .setMsgType("0100")
+                    //.setDupMsgType("0400")
+                    .setProcCode("311000")
+                    .setServiceCode("00")
+                    .setTransNameResId(R.string.trans_balance)
+                    .setReadMode(SearchMode.READ_MODE_ALL)
+                    .setIsDupSendAllowed(true)
+                    .setIsScriptSendAllowed(true)
+                    .setIsOfflineSendAllowed(true)
+                    .setIsVoidAllowed(true)
+                    .setIsPackReversal(true)
+                    ;
+        }
+
+        @Override
+        public PackIso8583 getPackager(PackListener listener) {
+            return new PackBalance(listener);
+        }
+    },
 
     MOTOSALE() {
         @Override

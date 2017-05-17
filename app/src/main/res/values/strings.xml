@@ -52,10 +52,13 @@
     <string name="trans_moto_sale">Moto Sale</string>
     <string name="trans_moto_refund">Moto Refund</string>
     <string name="trans_moto_void">Moto Void</string>
+    <string name="trans_base_moto_preAuth">Base Moto PreAuth</string>
+    <string name="trans_moto_menu">Moto</string>
     <string name="trans_moto_preAuth">Moto PreAuth</string>
     <string name="trans_moto_preauth_comp">Moto PreAuth Comp</string>
     <string name="trans_moto_preauth_cancel">Moto PreAuth Cancel</string>
     <string name="trans_moto_preauth_comp_cancel">Moto PreAuth Comp Cancel</string>
+    <string name="trans_quasi_cash">Quasi Cash</string>
     <string name="trans_cash_advance">Cash Advance</string>
     <string name="trans_refund">Refund</string>
     <string name="trans_void_refund">Void Refund</string>
@@ -74,7 +77,7 @@
     <string name="trans_user_agreement">User Agreement</string>
     <string name="trans_reprint">Reprint</string>
     <string name="trans_manage">Management</string>
-    <string name="trans_other_function">Other Function</string>
+    <string name="trans_other_transaction">Other Transaction</string>
     <string name="trans_DCC">DCC</string>//Zac
     <string name="trans_wizard">EDC PARAM</string>
     <string name="trans_settings">Settings</string>
@@ -100,6 +103,11 @@
     <string name="DCC_TransType">Trans Type</string>
     <string name="DCC_TotalAmount">Total Amount:   HKD</string>
     <string name="DCC_Rate">Rate</string>
+
+    <!-- Inquiry Balance -->
+    <string name="trans_balance">Inquiry Balance</string>
+    <string name="balance_prompt">Balance</string>
+    <string name="trans_amount_default">￥<xliff:g id="AMOUNT">1000.00</xliff:g></string>
 
     <!-- Transaction State -->
     <string name="state_normal">Normal</string>

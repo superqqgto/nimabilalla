@@ -119,6 +119,7 @@ public class SearchCardActivity extends BaseActivityWithTickForAction {
     private String cardNo; // 卡号
     private String transDate; // 日期
 
+
     private final static int READ_CARD_OK = 1; // 读卡成功
     //    private final static int READ_CARD_CANCEL = 2; // 取消读卡
 //    private final static int READ_CARD_ERR = 3; // 读卡失败
@@ -208,6 +209,7 @@ public class SearchCardActivity extends BaseActivityWithTickForAction {
         Bundle bundle = getIntent().getExtras();
 
         navTitle = getIntent().getStringExtra(EUIParamKeys.NAV_TITLE.toString());
+
         // 显示金额
         try {
             amount = bundle.getString(EUIParamKeys.TRANS_AMOUNT.toString());
@@ -324,7 +326,7 @@ public class SearchCardActivity extends BaseActivityWithTickForAction {
                 // manual input case: get click event from IME_ACTION_DONE, the button is always hidden.
                 if (pollingResult != null && pollingResult.getReaderType() == EReaderType.ICC) {
                     boolean enableTip = SysParamSp.Constant.YES.equals(SpManager.getSysParamSp().get(SysParamSp.EDC_SUPPORT_TIP));
-                    if (enableTip) {
+                    if (enableTip && !navTitle.equals("Inquiry Balance")) {
                         long baseAmountLong = CurrencyConverter.parse(amount);
                         float percent = EmvListenerImpl.percent;
                         Intent intent = new Intent(SearchCardActivity.this, AdjustTipActivity.class);

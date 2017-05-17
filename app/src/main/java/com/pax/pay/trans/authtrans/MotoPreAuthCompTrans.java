@@ -44,8 +44,6 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
         }
         DbManager.getTransDao().updateTransData(transData);
         deleteTransFromMotoTabBatch(); //从mototabbatch里面删除被void的moto preAuth
-
-        gotoState(State.SIGNATURE.toString());
     }
 
     @Override
@@ -53,7 +51,7 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
 
         bindEnterAuthCode();
         bindTransDetail();
-        bindEnterAmout();
+        bindEnterAmount();
         bindCheckCard();
         bindEnterCVV2();
         bindEnterPin();
@@ -68,13 +66,14 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
 
     @Override
     public void onActionResult(String currentState, ActionResult result) {
-        super.onActionResult(currentState, result);
+        if(isEndForward(currentState, result)){
+            return;
+        }
 
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-                //linzhao
-//                gotoState(State.TRANS_DETAIL.toString());
+                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_AMOUNT.toString());
@@ -102,6 +101,7 @@ public class MotoPreAuthCompTrans extends BaseMotoPreAuthTrans {
                 break;
             case OFFLINE_SEND:
                 gotoState(State.PRINT_PREVIEW.toString());
+                break;
             case PRINT_PREVIEW://寻卡之后的处理
                 onPrintPreviewResult(result);
                 break;

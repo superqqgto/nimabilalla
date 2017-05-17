@@ -34,6 +34,11 @@ public class ActionSendEmail extends AAction {
         super(listener);
     }
 
+    public ActionSendEmail(ActionStartListener startListener, TransData transData) {
+        super(startListener);
+        this.transData = transData;
+    }
+
     public ActionSendEmail setParam(TransData transData) {
         this.transData = transData;
         return this;
@@ -57,5 +62,25 @@ public class ActionSendEmail extends AAction {
                 }
             }
         });
+    }
+
+    public static class Builder {
+
+        private ActionStartListener startListener;
+        private TransData transData;
+
+        public Builder startListener(ActionStartListener startListener) {
+            this.startListener = startListener;
+            return this;
+        }
+
+        public Builder transData(TransData transData) {
+            this.transData = transData;
+            return this;
+        }
+
+        public ActionSendEmail create() {
+            return new ActionSendEmail(startListener, transData);
+        }
     }
 }

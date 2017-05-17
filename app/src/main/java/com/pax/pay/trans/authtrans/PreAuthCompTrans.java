@@ -2,6 +2,8 @@ package com.pax.pay.trans.authtrans;
 
 import com.pax.abl.core.ActionResult;
 import com.pax.edc.R;
+import com.pax.manager.DbManager;
+import com.pax.pay.trans.component.Component;
 import com.pax.pay.trans.model.ETransType;
 
 /**
@@ -13,8 +15,7 @@ public class PreAuthCompTrans extends BaseAuthTrans {
     private boolean isNeedInputAmount = true; // is need input amount
 
     public PreAuthCompTrans() {
-        super(ETransType.PREAUTH_COMP, null);
-        transNameResId = R.string.trans_preauth_comp;
+        super(ETransType.PREAUTH_COMP, R.string.trans_preauth_comp, null);
     }
 
     @Override
@@ -22,8 +23,9 @@ public class PreAuthCompTrans extends BaseAuthTrans {
 
         bindEnterAuthCode();
         bindTransDetail();
-        bindEnterAmout();
+        bindEnterAmount();
         bindCheckCard();
+        bindEmvProcess();
         bindEnterPin();
         bindOnline();
         bindSignature();
@@ -34,13 +36,22 @@ public class PreAuthCompTrans extends BaseAuthTrans {
     }
 
     @Override
+    protected void toSignOrPrint() {
+        super.toSignOrPrint();
+        DbManager.getTransDao().updateTransData(transData);
+        deleteTransFromTabBatch(); //从mototabbatch里面删除被void的moto preAuth
+    }
+
+    @Override
     public void onActionResult(String currentState, ActionResult result) {
-        super.onActionResult(currentState, result);
+        if (isEndForward(currentState, result)) {
+            return;
+        }
 
         switch (state) {
             case ENTER_AUTH_CODE:
                 onEnterAuthCodeResult(result);
-//                gotoState(State.TRANS_DETAIL.toString());
+                gotoState(State.TRANS_DETAIL.toString());
                 break;
             case TRANS_DETAIL:
                 gotoState(State.ENTER_AMOUNT.toString());
@@ -51,12 +62,16 @@ public class PreAuthCompTrans extends BaseAuthTrans {
             case CHECK_CARD://寻卡之后的处理
                 onCheckCardResult(result);
                 break;
+            case EMV_PROC: // emv后续处理
+                onEmvProcessResult(result);
+                break;
             case ENTER_PIN:
                 onEnterPinResult(result);
                 gotoState(State.ONLINE.toString());
                 break;
             case ONLINE:
-                onOnlineResult(result);
+//                onOnlineResult(result);
+                toSignOrPrint();
                 break;
             case SIGNATURE://输入金额之后的处理
                 onSignatureResult(result);

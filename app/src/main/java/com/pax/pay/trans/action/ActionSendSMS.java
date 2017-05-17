@@ -33,6 +33,11 @@ public class ActionSendSMS extends AAction {
         super(listener);
     }
 
+    public ActionSendSMS(ActionStartListener startListener, TransData transData) {
+        super(startListener);
+        this.transData = transData;
+    }
+
     public void setParam(TransData transData) {
         this.transData = transData;
     }
@@ -54,5 +59,25 @@ public class ActionSendSMS extends AAction {
                 }
             }
         });
+    }
+
+    public static class Builder {
+
+        private ActionStartListener startListener;
+        private TransData transData;
+
+        public Builder startListener(ActionStartListener startListener) {
+            this.startListener = startListener;
+            return this;
+        }
+
+        public Builder transData(TransData transData) {
+            this.transData = transData;
+            return this;
+        }
+
+        public ActionSendSMS create() {
+            return new ActionSendSMS(startListener, transData);
+        }
     }
 }

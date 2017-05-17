@@ -139,7 +139,7 @@ public class TransDataDb {
     }
 
     /**
-     * 在MmotoTabBatch中使用auth code查找preAuth的交易
+     * 在Batch中使用auth code查找preAuth的交易
      *
      * @param authCode 授权码
      * @return

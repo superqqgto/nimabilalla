@@ -18,6 +18,7 @@ import android.content.Context;
 
 import com.pax.abl.core.AAction;
 import com.pax.abl.core.AAction.ActionStartListener;
+import com.pax.abl.core.ATransaction;
 import com.pax.abl.core.ActionResult;
 import com.pax.dal.entity.EReaderType;
 import com.pax.dal.entity.PollingResult;
@@ -87,11 +88,11 @@ public class SaleTrans extends BaseTrans {
 
     private boolean isFreePin;
     private boolean isSupportBypass = true;
-    private boolean hasTip = false;
+    protected boolean hasTip = false;
     private String amountOrg;//Zac
     private String amountInput;
     private int lengthAmount;
-    boolean enableDcc = SpManager.getSysParamSp().get(SysParamSp.SUPPORT_DCC).equals(SysParamSp.Constant.YES);
+    protected boolean enableDcc = SpManager.getSysParamSp().get(SysParamSp.SUPPORT_DCC).equals(SysParamSp.Constant.YES);
 
     /**
      * @param amount    :total amount
@@ -101,7 +102,7 @@ public class SaleTrans extends BaseTrans {
     public SaleTrans(String amount, byte mode, boolean isFreePin,
                      TransEndListener transListener) {
         super(ETransType.SALE, transListener);
-        setParam(amount, "0", mode, isFreePin, false);
+        setParam(ETransType.SALE, amount, "0", mode, isFreePin, false);
     }
 
     /**
@@ -113,10 +114,23 @@ public class SaleTrans extends BaseTrans {
     public SaleTrans(String amount, String tipAmount, byte mode, boolean isFreePin,
                      TransEndListener transListener) {
         super(ETransType.SALE, transListener);
-        setParam(amount, tipAmount, mode, isFreePin, true);
+        setParam(ETransType.SALE, amount, tipAmount, mode, isFreePin, true);
     }
 
-    private void setParam(String amount, String tipAmount, byte mode, boolean isFreePin, boolean hasTip) {
+    //Added by daisy.zhou
+    /**
+     * @param amount    :total amount
+     * @param tipAmount :tip amount
+     * @param isFreePin
+     * @param mode      {@link com.pax.pay.trans.action.ActionSearchCard.SearchMode}, 如果等于-1，
+     */
+    public SaleTrans(ETransType transType, String amount, String tipAmount, byte mode,
+                     boolean isFreePin, boolean hasTip, TransEndListener transListener) {
+        super(transType, transListener);
+        setParam(transType, amount, tipAmount, mode, isFreePin, hasTip);
+    }
+
+    protected void setParam(ETransType transType, String amount, String tipAmount, byte mode, boolean isFreePin, boolean hasTip) {
         this.searchCardMode = mode;
         this.amount = amount;
         this.tipAmount = tipAmount;
@@ -124,8 +138,9 @@ public class SaleTrans extends BaseTrans {
         this.hasTip = hasTip;
 
         if (searchCardMode == -1) { // 待机银行卡消费入口
-            searchCardMode = ETransType.SALE.getReadMode();
-            this.transType = ETransType.SALE;
+//            this.transType = ETransType.SALE;   //Modified by Daisy.zhou
+            this.transType = transType;
+            searchCardMode = this.transType.getReadMode();
         } else if (searchCardMode == -3) { // entrance of quick pass by pin
             this.searchCardMode = SearchMode.WAVE;
             this.isFreePin = false;
@@ -223,7 +238,8 @@ public class SaleTrans extends BaseTrans {
                 Iterator iter2 = transData.getDccTransData().getCurrencyList().iterator();
                 Iterator iter3 = transData.getDccTransData().getConvRateList().iterator();
                 while (iter1.hasNext()) {
-                    mutiAmount = iter1.next() + " " + iter2.next() + " " + "Rate:" + iter3.next();
+//                    mutiAmount = iter1.next() + " " + iter2.next() + " " + "Rate:" + iter3.next();
+                    mutiAmount = iter1.next() + " " + iter2.next();
                     map.put(Integer.toString(i), mutiAmount);
                     i++;
                 }
@@ -358,7 +374,8 @@ public class SaleTrans extends BaseTrans {
                 gotoState(State.USER_AGREEMENT.toString());
             } else {
                 if (enableDcc) {
-                    transData.setOrigTransType(ETransType.SALE);
+//                    transData.setOrigTransType(ETransType.SALE);
+                    transData.setOrigTransType(this.transType);
                     transData.setTransType(ETransType.DCC);
                     gotoState(SaleTrans.State.ONLINE_DCC.toString());
                 } else {
@@ -410,7 +427,6 @@ public class SaleTrans extends BaseTrans {
                     DbManager.getTransDao().updateTransData(dupTransData);
                 }
             }
-
         }
 
         int ret = result.getRet();
@@ -439,7 +455,8 @@ public class SaleTrans extends BaseTrans {
             case CHECK_CARD: // subsequent processing of check card
                 CardInformation cardInfo = (CardInformation) result.getData();
                 saveCardInfo(cardInfo, transData);
-                transData.setTransType(ETransType.SALE);
+//                transData.setTransType(ETransType.SALE);
+                transData.setTransType(this.transType);
                 // enter card number manually
                 mode = cardInfo.getSearchMode();
                 if (mode == SearchMode.SWIPE | mode == SearchMode.KEYIN) {
@@ -493,7 +510,8 @@ public class SaleTrans extends BaseTrans {
                 break;
             }
             case ENQUIRE: {
-                transData.setTransType(ETransType.SALE);
+//                transData.setTransType(ETransType.SALE);
+                transData.setTransType(this.transType);
                 String dccBackData = (String) result.getData();
                 String Amount;
                 Iterator iter1 = transData.getDccTransData().getTransAmtList().iterator();
@@ -630,6 +648,8 @@ public class SaleTrans extends BaseTrans {
                 gotoState(State.ADJUST_TIP.toString());
             else if (baseAmount * percent / 100 < tipAmount)
                 showAdjustTipDialog(ContextUtils.getActyContext());
+            else
+                gotoState(State.ENTER_PIN.toString());    //Added by daisy.zhou
         } else {
             // enter pin
             gotoState(State.ENTER_PIN.toString());

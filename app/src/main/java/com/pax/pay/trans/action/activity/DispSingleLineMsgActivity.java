@@ -73,7 +73,7 @@ public class DispSingleLineMsgActivity extends BaseActivityWithTickForAction {
         tvTitle.setText(navTitle);
         tvPrompt.setText(prompt);
 
-        tvContent.setText(content);
+        tvContent.setText(amountDisplay(content));
         if (content.contains("￥")) {
             SpannableString msp = new SpannableString(content);
             msp.setSpan(new RelativeSizeSpan(0.7f), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -81,6 +81,12 @@ public class DispSingleLineMsgActivity extends BaseActivityWithTickForAction {
                     getResources().getDimensionPixelSize(R.dimen.font_size_larger));
             tvContent.setText(msp);
         }
+    }
+
+    private String amountDisplay(String content) {
+        //content=content.replace("0*","");
+        content=content.substring(0, content.length() - 2) + "." + content.substring(content.length() - 2, content.length()) + " HKD";
+        return content.replaceFirst("^0*","");
     }
 
     @Override
